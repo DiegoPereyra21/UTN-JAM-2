@@ -185,12 +185,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombiePuntos
   player: {fileID: 0}
-  velocidad: 7
   puntos: []
   puntoAtaque: {fileID: 0}
   tiempoEntrePasos: 0.6
   tiempoEnAtaque: 0.6
+  velocidad: 7
   pasosAdelante: 1
   pasosAtras: 0
   retrocesoPorGolpe: 0
   morirTrasAtacar: 1
+  requiereMantener: 0
+  turnosParaMatar: 3
+  lineaHold: {fileID: 0}
+  cabeza: {fileID: 0}
