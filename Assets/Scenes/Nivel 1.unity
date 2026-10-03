@@ -1040,6 +1040,9 @@ MonoBehaviour:
   - {fileID: 1334594650}
   puntoAtaque: {fileID: 2025193935}
   beatsEntreSpawns: 2
+  lootTableLevel1: {fileID: 11400000, guid: f0aedb0f652652b4c9fb42d82c258d56, type: 2}
+  lootTableLevel2: {fileID: 11400000, guid: 8da11fffc3480254dbd07e7af7227378, type: 2}
+  lootTableLevel3: {fileID: 11400000, guid: 2a9f4fce4c64bfe42ba6237e1391f6af, type: 2}
 --- !u!4 &1553491989
 Transform:
   m_ObjectHideFlags: 0

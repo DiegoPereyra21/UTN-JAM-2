@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 5939061274666260821}
   - component: {fileID: 587629140476793945}
   - component: {fileID: 1297096903277860955}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zombie3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7285141045295018101}
   - component: {fileID: 5209539264759466348}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Line Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
