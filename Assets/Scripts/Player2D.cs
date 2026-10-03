@@ -45,9 +45,12 @@ public class Player2D : MonoBehaviour
         //agacharse s o Lctrl
         agachado = enSuelo && !saltando && (Keyboard.current.sKey.isPressed || Keyboard.current.leftCtrlKey.isPressed);
 
-        //saltar espacio o w
-        if (enSuelo && !saltando && !agachado && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.wKey.wasPressedThisFrame))
+        //saltar espacio o w, tambien si sigue agachado osea sale del agachado saltando
+        if (enSuelo && !saltando && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.wKey.wasPressedThisFrame))
+        {
+            agachado = false;
             StartCoroutine(Saltar());
+        }
 
 
         //para q si suelta caiga el player
