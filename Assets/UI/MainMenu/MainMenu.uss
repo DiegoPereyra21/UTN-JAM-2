@@ -1,0 +1,66 @@
+#MainMenu {
+    width: 100%;
+    height: 25%;
+
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#StartContainer {
+    width: 100%;
+    height: 20%;
+
+    align-items: center;
+    justify-content: center;
+}
+
+#StartButton {
+    color: rgb(235, 225, 205);
+    font-size: 28px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+
+    align-self: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+
+    letter-spacing: 3px;
+
+    -unity-text-outline-width: 3px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.9);
+}
+
+#StartButton:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 245, 220);
+}
+
+#StartButton:active {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#StartButton:focus {
+    background-color: rgba(0, 0, 0, 0);
+}
