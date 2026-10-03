@@ -29,8 +29,15 @@ public class ZombiePuntos : MonoBehaviour
     [SerializeField] private bool requiereMantener = false;
     //cuantos pasos tiene que aguantar el player(creo q siempre sera 3, pero por las dudas)
     [SerializeField] private int turnosParaMatar = 3;
+    //linea gruesa q guia
+    [SerializeField] private LineRenderer lineaHold;
+    //punto desde la cabeza, sino salia el line desde el pivot
+    [SerializeField] private Transform cabeza;
     private bool sujetado;
     private float tiempoSujeto;
+    //necesario para q no de saltos raros como antes, ahora va fluido
+    private Vector3 finalLinea;
+    private bool lineaIniciada;
 
     public bool RequiereMantener => requiereMantener;
     //tiempo en el que el spawner no crea otros zombis despues de este
@@ -60,6 +67,12 @@ public class ZombiePuntos : MonoBehaviour
         transform.position = puntos[0].position;
         destino = transform.position;
         proximoPaso = Time.time + tiempoEntrePasos;
+
+        if (lineaHold != null)
+        {
+            lineaHold.useWorldSpace = true;
+            lineaHold.positionCount = 2;
+        }
     }
 
     void Update()
@@ -69,7 +82,7 @@ public class ZombiePuntos : MonoBehaviour
 
         //se desliza hacia el destino en vez de teletransportarse
         transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
-
+        ActualizarLinea();
         //si lo estan sujetando no avanza, cuenta el tiempo de los turnos
         if (sujetado)
         {
@@ -163,5 +176,35 @@ public class ZombiePuntos : MonoBehaviour
     {
         sujetado = false;
         proximoPaso = Time.time + tiempoEntrePasos;
+    }
+
+    //linea desde el zombi hasta el punto donde termina el hold, avanza mientras mantenes
+    void ActualizarLinea()
+    {
+        if (lineaHold == null) return;
+
+        //solo se ve en el zombi de mantener y no mientras ataca
+        lineaHold.enabled = requiereMantener && !atacando;
+        if (!lineaHold.enabled) return;
+
+        Vector3 inicio = cabeza != null ? cabeza.position : transform.position;
+        //no quedaba a la altura de la cabeza, asi q con esto calc la distancai entre el pivote y la cabeza y agrego offset
+        Vector3 offset = inicio - transform.position;
+        //el final del hold es la cantidad de turnos para matar
+        int indiceFinal = Mathf.Max(indice - turnosParaMatar, 0);
+        Vector3 objetivo = puntos[indiceFinal].position + offset;
+        //la primera vez queda directo en su lugar despues se desliza a la misma velocidad que el zombi
+        if (!lineaIniciada)
+        {
+            finalLinea = objetivo;
+            lineaIniciada = true;
+        }
+
+        finalLinea = Vector3.MoveTowards(finalLinea, objetivo, velocidad * Time.deltaTime);
+        //0 si no lo sujetan, 1 cuando termino de mantener
+        float progreso = sujetado ? tiempoSujeto / (turnosParaMatar * tiempoEntrePasos) : 0f;
+        //el inicio queda pegado a la cabeza y el extremo lejano se acerca al zombi
+        lineaHold.SetPosition(0, inicio);
+        lineaHold.SetPosition(1, Vector3.Lerp(finalLinea, inicio, progreso));
     }
 }
