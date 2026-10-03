@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 587629140476793945}
   - component: {fileID: 1297096903277860955}
   m_Layer: 0
-  m_Name: Zombie2Pivot
+  m_Name: Zombie3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

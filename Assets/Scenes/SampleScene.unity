@@ -737,8 +737,8 @@ MonoBehaviour:
   zombiesPrefabs:
   - {fileID: 3527139928410644887, guid: 8c7ff836894c2b547ba68c14ce05278d, type: 3}
   - {fileID: 2856871505327660818, guid: 8c497edd8ee3e1b478691dad0fbc67cb, type: 3}
+  - {fileID: 4616598219367110134, guid: d9c980710bc9d06448891ec849f21b9c, type: 3}
   player: {fileID: 2004538755311179131}
-  tiempoEntreSpawns: 8
   puntos:
   - {fileID: 1929044203}
   - {fileID: 1288078939}
@@ -747,6 +747,7 @@ MonoBehaviour:
   - {fileID: 492486427}
   - {fileID: 854186945}
   puntoAtaque: {fileID: 2025193935}
+  tiempoEntreSpawns: 8
 --- !u!4 &1553491989
 Transform:
   m_ObjectHideFlags: 0
@@ -844,6 +845,7 @@ MonoBehaviour:
   golpeMedio: {fileID: 1032881615671487611}
   golpeAlto: {fileID: 5493654660421223911}
   radioGolpe: 0.5
+  cooldownGolpe: 0.5
   capaEnemigos:
     serializedVersion: 2
     m_Bits: 64
@@ -851,7 +853,6 @@ MonoBehaviour:
   velocidadSubida: 35
   tiempoArriba: 0.5
   gravedadCaida: 8
-  cooldownGolpe: 0.5
 --- !u!4 &600702765188304963
 Transform:
   m_ObjectHideFlags: 0
