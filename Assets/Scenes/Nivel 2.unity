@@ -830,7 +830,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 43dcb15b3b3c4d34c9ab022bde65883b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RelojMusica
   musica: {fileID: 1542974984}
-  bpm: 133
+  bpm: 106
   offset: 0
   cuentaInicial: 2
   metronomo: 1
