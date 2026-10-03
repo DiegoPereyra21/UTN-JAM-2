@@ -56,6 +56,10 @@ public class ZombiePuntos : MonoBehaviour
     private int beatsContados;
     //hacia donde se desliza
     private Vector3 destino;
+    private Vida vida;
+    private bool alreadyDied;
+    private BuildingLootTable lootTable;
+
 
     //lo llamada el spawner para asignar todo
     public void Iniciar(Transform nuevoPlayer, Transform[] nuevosPuntos, Transform nuevoPuntoAtaque)
@@ -74,6 +78,11 @@ public class ZombiePuntos : MonoBehaviour
         //se suscribe al reloj, cada beat llama a AlBeat
         RelojMusica.Instance.OnBeat += AlBeat;
 
+        vida = GetComponent<Vida>();
+
+        if (vida != null)
+            vida.OnDeath += Die;
+
         if (lineaHold != null)
         {
             lineaHold.useWorldSpace = true;
@@ -85,6 +94,8 @@ public class ZombiePuntos : MonoBehaviour
     {
         //se desuscribe, sino da error cuando el zombi muere
         if (RelojMusica.Instance != null) RelojMusica.Instance.OnBeat -= AlBeat;
+
+        if (vida != null) vida.OnDeath -= Die;
     }
 
     void Update()
@@ -98,7 +109,7 @@ public class ZombiePuntos : MonoBehaviour
 
         //si lo sujetan y llego el beat final del hold, muere
         if (sujetado && RelojMusica.Instance.BeatActual >= beatFinHold)
-            Destroy(gameObject);
+            Die();
     }
 
     //se llama en cada beat de la musica, aca se da el paso
@@ -150,7 +161,7 @@ public class ZombiePuntos : MonoBehaviour
         //si esta activado muere luego de atacar
         if (morirTrasAtacar)
         {
-            Destroy(gameObject);
+            Die();
             yield break;
         }
 
@@ -225,5 +236,47 @@ public class ZombiePuntos : MonoBehaviour
         //el inicio queda pegado a la cabeza y el extremo lejano se acerca al zombi
         lineaHold.SetPosition(0, inicio);
         lineaHold.SetPosition(1, Vector3.Lerp(finalLinea, inicio, progreso));
+    }
+
+    public void Die()
+    {
+        if (alreadyDied)
+        {
+            return;
+        }
+
+        alreadyDied = true;
+
+        Debug.Log($"[{name}] MUERE. LootTable: {lootTable}");
+
+        if (lootTable == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        BuildingItemData droppedItem = lootTable.GetRandomItem();
+
+        if (droppedItem == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if (BuildingInventory.Instance == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        BuildingInventory.Instance.AddItem(droppedItem);
+
+        Destroy(gameObject);
+    }
+
+    // define el loot del enemigo
+    public void SetLootTable(BuildingLootTable table)
+    {
+        lootTable = table;
     }
 }

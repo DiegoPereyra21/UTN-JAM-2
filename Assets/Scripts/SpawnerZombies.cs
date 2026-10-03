@@ -8,11 +8,16 @@ public class SpawnerZombies : MonoBehaviour
     [SerializeField] private Transform puntoAtaque;
     //cada cuantos beats spawnea un zombi
     [SerializeField] private int beatsEntreSpawns = 4;
+    [SerializeField] private BuildingLootTable lootTableLevel1;
+    [SerializeField] private BuildingLootTable lootTableLevel2;
+    [SerializeField] private BuildingLootTable lootTableLevel3;
 
     //beats que pasaron desde el ultimo spawn
     private int beatsContados;
     //beats de pausa despues de un zombi de mantener
     private int beatsPausa;
+
+    private int currentLevel = 1;
 
     void Start()
     {
@@ -48,9 +53,29 @@ public class SpawnerZombies : MonoBehaviour
 
         //le asigna player y puntos
         ZombiePuntos zp = zombie.GetComponent<ZombiePuntos>();
+        zp.SetLootTable(GetLootTable());
         zp.Iniciar(player, puntos, puntoAtaque);
 
         //para q si es zomibe de mantener no spawnee nada por los turnos q deba mantener
         beatsPausa = zp.BeatsSinSpawn;
+    }
+
+    private BuildingLootTable GetLootTable()
+    {
+        switch (currentLevel)
+        {
+            case 1:
+                return lootTableLevel1;
+
+            case 2:
+                return lootTableLevel2;
+
+            case 3:
+                return lootTableLevel3;
+
+            default:
+                //return null;
+                return lootTableLevel1;
+        }
     }
 }

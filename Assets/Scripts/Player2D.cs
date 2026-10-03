@@ -107,8 +107,13 @@ public class Player2D : MonoBehaviour
 
             //quita vida
             vida.RecibirGolpe();
-            //los hace retroceder 1 espacio
-            if (zombie != null) zombie.Retroceder();
+
+            if (!vida.IsDead())
+            {
+                //si sobrevivio, retrocede
+                if (zombie != null)
+                    zombie.Retroceder();
+            }
         }
     }
 
