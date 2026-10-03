@@ -21,11 +21,15 @@ public class SpawnerZombies : MonoBehaviour
         if (Time.time < proximoSpawn) return;
         proximoSpawn = Time.time + tiempoEntreSpawns;
 
-        // elige un prefab al azar y lo crea en el primer punto
+        //elige un prefab al azar y lo crea en el primer punto
         GameObject prefab = zombiesPrefabs[Random.Range(0, zombiesPrefabs.Length)];
         GameObject zombie = Instantiate(prefab, puntos[0].position, Quaternion.identity);
 
-        // le asigna player y puntos
-        zombie.GetComponent<ZombiePuntos>().Iniciar(player, puntos, puntoAtaque);
+        //le asigna player y puntos
+        ZombiePuntos zp = zombie.GetComponent<ZombiePuntos>();
+        zp.Iniciar(player, puntos, puntoAtaque);
+
+        //para q si es zomibe de mantener no spawnee nada por los turnos q deba mantener
+        proximoSpawn += zp.TiempoSinSpawn;
     }
 }

@@ -27,6 +27,9 @@ public class Player2D : MonoBehaviour
     private bool enSuelo;
     private bool agachado;
     private bool saltando;
+    //zombi que esta sujetando con el golpe alto
+    private ZombiePuntos zombieSujeto;
+    private bool cayendo;
 
     void Awake()
     {
@@ -45,6 +48,15 @@ public class Player2D : MonoBehaviour
         //saltar espacio o w
         if (enSuelo && !saltando && !agachado && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.wKey.wasPressedThisFrame))
             StartCoroutine(Saltar());
+
+
+        //para q si suelta caiga el player
+        bool apretando = Keyboard.current.dKey.isPressed || Mouse.current.leftButton.isPressed || Mouse.current.rightButton.isPressed || Mouse.current.middleButton.isPressed;
+        if (zombieSujeto != null && !apretando)
+        {
+            zombieSujeto.Soltar();
+            zombieSujeto = null;
+        }
 
         //atac con d o clicks
         bool click = Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame || Mouse.current.middleButton.wasPressedThisFrame;
@@ -72,10 +84,22 @@ public class Player2D : MonoBehaviour
             //si no tiene vida o ya lo golpee, sigue con el otro
             if (vida == null || !yaGolpeados.Add(vida)) continue;
 
+            ZombiePuntos zombie = c.GetComponentInParent<ZombiePuntos>();
+
+            //zombie q se mantiene, funciona distinto
+            if (zombie != null && zombie.RequiereMantener)
+            {
+                if (punto == golpeAlto && !cayendo && zombieSujeto == null)
+                {
+                    zombieSujeto = zombie;
+                    zombie.Sujetar();
+                }
+                continue;
+            }
+
             //quita vida
             vida.RecibirGolpe();
             //los hace retroceder 1 espacio
-            ZombiePuntos zombie = c.GetComponentInParent<ZombiePuntos>();
             if (zombie != null) zombie.Retroceder();
         }
     }
@@ -98,10 +122,14 @@ public class Player2D : MonoBehaviour
         //espera arriba un ratito
         rb.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(tiempoArriba);
+        //si esta sujetando un zombi se queda arriba hasta soltar o hasta que muera
+        yield return new WaitUntil(() => zombieSujeto == null);
         //baja rapidamente
+        cayendo = true;
         rb.gravityScale = gravedadCaida;
         yield return new WaitUntil(() => enSuelo);
         //vuelve a normalidad
+        cayendo = false;
         rb.gravityScale = gravedadNormal;
         saltando = false;
     }

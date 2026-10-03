@@ -61,15 +61,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombiePuntos
   player: {fileID: 0}
-  velocidad: 7
   puntos: []
   puntoAtaque: {fileID: 0}
   tiempoEntrePasos: 0.6
   tiempoEnAtaque: 0.6
+  velocidad: 7
   pasosAdelante: 1
   pasosAtras: 0
   retrocesoPorGolpe: 0
   morirTrasAtacar: 1
+  requiereMantener: 1
+  turnosParaMatar: 3
 --- !u!50 &1297096903277860955
 Rigidbody2D:
   serializedVersion: 5

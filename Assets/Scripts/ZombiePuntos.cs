@@ -25,6 +25,19 @@ public class ZombiePuntos : MonoBehaviour
     //true para sigueiten avanzar
     private bool avanzando = true;
 
+    //¨zombie alto, es para agregar alguna mecanica de mantener apretado el boton
+    [SerializeField] private bool requiereMantener = false;
+    //cuantos pasos tiene que aguantar el player(creo q siempre sera 3, pero por las dudas)
+    [SerializeField] private int turnosParaMatar = 3;
+    private bool sujetado;
+    private float tiempoSujeto;
+
+    public bool RequiereMantener => requiereMantener;
+    //tiempo en el que el spawner no crea otros zombis despues de este
+    public float TiempoSinSpawn => requiereMantener ? turnosParaMatar * tiempoEntrePasos : 0f;
+
+
+
     //x cual punto va
     private int indice;
     //true mientras esta en el punto de ataq
@@ -57,7 +70,17 @@ public class ZombiePuntos : MonoBehaviour
         //se desliza hacia el destino en vez de teletransportarse
         transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
 
+        //si lo estan sujetando no avanza, cuenta el tiempo de los turnos
+        if (sujetado)
+        {
+            tiempoSujeto += Time.deltaTime;
+            if (tiempoSujeto >= turnosParaMatar * tiempoEntrePasos) Destroy(gameObject);
+            return;
+        }
+
         if (atacando || Time.time < proximoPaso) return;
+
+
         proximoPaso = Time.time + tiempoEntrePasos;
 
         if (indice < puntos.Length - 1)
@@ -121,8 +144,24 @@ public class ZombiePuntos : MonoBehaviour
         }
         indice = Mathf.Max(0, indice - retrocesoPorGolpe);
         destino = puntos[indice].position;
-        // reinicia todo y el tiempo hasta el proximo paso
+        //reinicia todo y el tiempo hasta el proximo paso
         avanzando = true;
+        proximoPaso = Time.time + tiempoEntrePasos;
+    }
+
+    //lo llama el player al mantener
+    public void Sujetar()
+    {
+        //si esta atacando no se puede agarrar
+        if (atacando) return;
+        sujetado = true;
+        tiempoSujeto = 0f;
+    }
+
+    //por si suelta antes de tiempo, el zombie actua normal
+    public void Soltar()
+    {
+        sujetado = false;
         proximoPaso = Time.time + tiempoEntrePasos;
     }
 }
