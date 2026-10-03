@@ -10,6 +10,17 @@ public class ZombiePuntos : MonoBehaviour
     [SerializeField] private Transform puntoAtaque;
     [SerializeField] private float tiempoEntrePasos = 1f;
     [SerializeField] private float tiempoEnAtaque = 0.3f;
+
+    //segun el zombi
+    //cuantos pasos da de 1, saltenado puntos
+    [SerializeField] private int pasosAdelante = 1;
+    //cuantos retrocede
+    [SerializeField] private int pasosAtras = 0;
+    //cuanto retrocee al recibir golpoe
+    [SerializeField] private int retrocesoPorGolpe = 1;
+    //true para sigueiten avanzar
+    private bool avanzando = true;
+
     //x cual punto va
     private int indice;
     //true mientras esta en el punto de ataq
@@ -37,8 +48,20 @@ public class ZombiePuntos : MonoBehaviour
 
         if (indice < puntos.Length - 1)
         {
-            //avanza al siguiente punto
-            indice++;
+            if (avanzando)
+            {
+                //salta varios puntos sin pasarse del ultimo
+                indice = Mathf.Min(indice + pasosAdelante, puntos.Length - 1);
+                //si tiene retroceso, el proximo movimiento es hacia atras
+                if (pasosAtras > 0) avanzando = false;
+            }
+            else
+            {
+                //retrocede sin pasar del primero
+                indice = Mathf.Max(0, indice - pasosAtras);
+                avanzando = true;
+            }
+
             transform.position = puntos[indice].position;
         }
         else
@@ -52,27 +75,31 @@ public class ZombiePuntos : MonoBehaviour
     {
         atacando = true;
 
-        //va al punto espacial y atacara
+        //se transporta al punto cerca del player y golpea al player
         transform.position = puntoAtaque.position;
         player.GetComponent<Vida>().RecibirGolpe();
 
         yield return new WaitForSeconds(tiempoEnAtaque);
 
-        //leugo del ataque vuelve a su lugar
+        //vuelve al ultimo punto
         transform.position = puntos[indice].position;
         atacando = false;
+
+        //reciniciar tiempo, sino antes pegaba muy rapidamente
+        proximoPaso = Time.time + tiempoEntrePasos;
     }
 
     public void Retroceder()
     {
-        //no retrocedeen caso de estar atacando o si esta fuera
-        if (atacando || indice <= 0) return;
-
-        //vuelve al punto atras
-        indice--;
+        //o retrocede si esta atacando o esta en el primer punto
+        if (atacando || indice <= 0) 
+        {
+        return;
+        }
+        indice = Mathf.Max(0, indice - retrocesoPorGolpe);
         transform.position = puntos[indice].position;
-
-        //reinicia el tiempo hasta el proximao paso, xq aveces si golpeabas a ultimo momento luego avanzada instantaneamente
+        // reinicia todo y el tiempo hasta el proximo paso
+        avanzando = true;
         proximoPaso = Time.time + tiempoEntrePasos;
     }
 }

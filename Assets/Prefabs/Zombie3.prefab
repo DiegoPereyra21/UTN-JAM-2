@@ -63,8 +63,11 @@ MonoBehaviour:
   player: {fileID: 0}
   puntos: []
   puntoAtaque: {fileID: 0}
-  tiempoEntrePasos: 1
-  tiempoEnAtaque: 0.3
+  tiempoEntrePasos: 0.4
+  tiempoEnAtaque: 0.4
+  pasosAdelante: 1
+  pasosAtras: 0
+  retrocesoPorGolpe: 1
 --- !u!50 &1297096903277860955
 Rigidbody2D:
   serializedVersion: 5
@@ -214,7 +217,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
