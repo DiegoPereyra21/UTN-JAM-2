@@ -830,7 +830,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 8e8f9f3ce7d770348acc30a46a0c5f4b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 43dcb15b3b3c4d34c9ab022bde65883b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -929,7 +929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RelojMusica
   musica: {fileID: 1542974984}
-  bpm: 120
+  jugador: {fileID: 2004538755311179131}
+  bpm: 106
   offset: 0
   cuentaInicial: 2
   metronomo: 1
@@ -1092,14 +1093,14 @@ MonoBehaviour:
   golpeMedio: {fileID: 1032881615671487611}
   golpeAlto: {fileID: 5493654660421223911}
   radioGolpe: 0.5
-  cooldownGolpe: 0.5
+  cooldownBeats: 0.5
   capaEnemigos:
     serializedVersion: 2
     m_Bits: 64
   alturaMaxima: 2.3
-  velocidadSubida: 42
-  tiempoArriba: 0.2
-  gravedadCaida: 15
+  beatsSubida: 0.15
+  beatsArriba: 0.5
+  gravedadCaida: 20
 --- !u!4 &600702765188304963
 Transform:
   m_ObjectHideFlags: 0
@@ -1160,6 +1161,7 @@ GameObject:
   - component: {fileID: 5643374625968720855}
   - component: {fileID: 556287889290844401}
   - component: {fileID: 4784527863307837812}
+  - component: {fileID: 8684086361092928464}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1397,6 +1399,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &8684086361092928464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3409943851680405514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a136f6b98e0ba498902dbd025f436c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsoBeat
+  intensidad: 0.1
+  velocidadVuelta: 10
+  cadaBeats: 1
+  desfase: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

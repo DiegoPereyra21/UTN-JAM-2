@@ -13,17 +13,20 @@ public class Player2D : MonoBehaviour
     [SerializeField] private Transform golpeMedio;
     [SerializeField] private Transform golpeAlto;
     [SerializeField] private float radioGolpe = 0.5f;
-    [SerializeField] private float cooldownGolpe = 0.5f;
+    //cooldown del golpe en beats (0.5 = medio beat)
+    [SerializeField] private float cooldownBeats = 0.5f;
     [SerializeField] private LayerMask capaEnemigos;
     //salto para q se pause un ratito arriba
     [SerializeField] private float alturaMaxima = 3f;
-    [SerializeField] private float velocidadSubida = 25f;
-    [SerializeField] private float tiempoArriba = 1f;
+    //cuanto tarda en subir, en beats
+    [SerializeField] private float beatsSubida = 0.25f;
+    //cuanto espera arriba, en beats
+    [SerializeField] private float beatsArriba = 1f;
     [SerializeField] private float gravedadCaida = 8f;
     //privadas
     private Rigidbody2D rb;
     private float gravedadNormal;
-    private float proximoGolpe;
+    private float proximoGolpe = -999f;
     private bool enSuelo;
     private bool agachado;
     private bool saltando;
@@ -39,6 +42,8 @@ public class Player2D : MonoBehaviour
     }
     void Update()
     {
+        //en pausa no se puede hacer nada
+        if (Time.timeScale == 0f) return;
         //revisa si toca el suelo
         enSuelo = Physics2D.OverlapCircle(suelo.position, 0.1f, capaSuelo);
 
@@ -63,9 +68,9 @@ public class Player2D : MonoBehaviour
 
         //atac con d o clicks
         bool click = Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame || Mouse.current.middleButton.wasPressedThisFrame;
-        if ((Keyboard.current.dKey.wasPressedThisFrame || click) && Time.time >= proximoGolpe)
+        if ((Keyboard.current.dKey.wasPressedThisFrame || click) && RelojMusica.Instance.BeatActual >= proximoGolpe)
         {
-            proximoGolpe = Time.time + cooldownGolpe; // empieza el cooldown
+            proximoGolpe = RelojMusica.Instance.BeatActual + cooldownBeats; // empieza el cooldown (en beats)
             Golpear();
         }
     }
@@ -112,19 +117,21 @@ public class Player2D : MonoBehaviour
         saltando = true;
         //max altura
         float yTope = transform.position.y + alturaMaxima;
+        //velocidad para subir justo en los beats elegidos
+        float velocidadSubida = alturaMaxima / (beatsSubida * RelojMusica.Instance.SegundosPorBeat);
         //corta gravedad al subir
         rb.gravityScale = 0;
 
-        //sube rapido hasta el max altura
+        //sube hasta el max altura
         while (transform.position.y < yTope)
         {
             rb.linearVelocity = new Vector2(0, velocidadSubida);
             yield return null;
         }
 
-        //espera arriba un ratito
+        //espera arriba unos beats
         rb.linearVelocity = Vector2.zero;
-        yield return new WaitForSeconds(tiempoArriba);
+        yield return new WaitForSeconds(beatsArriba * RelojMusica.Instance.SegundosPorBeat);
         //si esta sujetando un zombi se queda arriba hasta soltar o hasta que muera
         yield return new WaitUntil(() => zombieSujeto == null);
         //baja rapidamente

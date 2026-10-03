@@ -96,8 +96,8 @@ MonoBehaviour:
   puntos: []
   puntoAtaque: {fileID: 0}
   beatsPorPaso: 1
-  tiempoEnAtaque: 0.45
-  velocidad: 15
+  beatsEnAtaque: 0.25
+  velocidad: 20
   pasosAdelante: 1
   pasosAtras: 0
   retrocesoPorGolpe: 0
@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 6824682691755496298}
   - component: {fileID: 8245304982957597235}
   - component: {fileID: 6771661310402139171}
+  - component: {fileID: 6649161123253224400}
   m_Layer: 6
   m_Name: Zombie2
   m_TagString: Untagged
@@ -405,3 +406,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.76495683}
   m_Size: {x: 1, y: 0.47008002}
   m_Direction: 0
+--- !u!114 &6649161123253224400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965106467316367717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a136f6b98e0ba498902dbd025f436c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsoBeat
+  intensidad: 0.1
+  velocidadVuelta: 10
+  cadaBeats: 1

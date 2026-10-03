@@ -10,9 +10,10 @@ public class ZombiePuntos : MonoBehaviour
     [SerializeField] private Transform puntoAtaque;
     //cada cuantos beats da un paso (1 = en cada beat, 2 = un paso cada 2 beats)
     [SerializeField] private int beatsPorPaso = 1;
-    [SerializeField] private float tiempoEnAtaque = 0.3f;
-    //que tan rapido se desliza entre puntos
-    [SerializeField] private float velocidad = 5f;
+    //cuanto dura el ataque, en beats, 0.25 es 1/4 de beat, cambiar segun eso
+    [SerializeField] private float beatsEnAtaque = 0.25f;
+    //que tan rapido se desliza entre puntos(me termino gustando mas con esto, ya q va de golpe)
+    [SerializeField] private float velocidad = 35f;
 
     //segun el zombi
     //cuantos pasos da de 1, saltenado puntos
@@ -37,6 +38,8 @@ public class ZombiePuntos : MonoBehaviour
     private bool sujetado;
     //beat (con decimales) en el que lo agarraron
     private float beatInicioHold;
+    //beat exacto donde termina el hold, siempre cae justo en un beat
+    private float beatFinHold;
     //necesario para q no de saltos raros como antes, ahora va fluido
     private Vector3 finalLinea;
     private bool lineaIniciada;
@@ -93,8 +96,8 @@ public class ZombiePuntos : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
         ActualizarLinea();
 
-        //si lo sujetan y pasaron los beats del hold, muere
-        if (sujetado && RelojMusica.Instance.BeatActual - beatInicioHold >= turnosParaMatar * beatsPorPaso)
+        //si lo sujetan y llego el beat final del hold, muere
+        if (sujetado && RelojMusica.Instance.BeatActual >= beatFinHold)
             Destroy(gameObject);
     }
 
@@ -142,7 +145,7 @@ public class ZombiePuntos : MonoBehaviour
         destino = transform.position;
         player.GetComponent<Vida>().RecibirGolpe();
 
-        yield return new WaitForSeconds(tiempoEnAtaque);
+        yield return new WaitForSeconds(beatsEnAtaque * RelojMusica.Instance.SegundosPorBeat);
 
         //si esta activado muere luego de atacar
         if (morirTrasAtacar)
@@ -181,6 +184,8 @@ public class ZombiePuntos : MonoBehaviour
         if (atacando) return;
         sujetado = true;
         beatInicioHold = RelojMusica.Instance.BeatActual;
+        //termina justo en un beat: redondea al beat mas cercano y suma los turnos
+        beatFinHold = Mathf.Round(beatInicioHold) + turnosParaMatar * beatsPorPaso;
     }
 
     //por si suelta antes de tiempo, el zombie actua normal
@@ -213,9 +218,10 @@ public class ZombiePuntos : MonoBehaviour
         }
 
         finalLinea = Vector3.MoveTowards(finalLinea, objetivo, velocidad * Time.deltaTime);
-        //0 si no lo sujetan, 1 cuando termino de mantener (ahora medido en beats)
-        float progreso = sujetado ? (RelojMusica.Instance.BeatActual - beatInicioHold) / (turnosParaMatar * beatsPorPaso) : 0f;
-        progreso = Mathf.Clamp01(progreso);
+        //0 si no lo sujetan, 1 cuando termino de mantener (del agarre al beat final)
+        float progreso = 0f;
+        if (sujetado)
+            progreso = Mathf.Clamp01((RelojMusica.Instance.BeatActual - beatInicioHold) / (beatFinHold - beatInicioHold));
         //el inicio queda pegado a la cabeza y el extremo lejano se acerca al zombi
         lineaHold.SetPosition(0, inicio);
         lineaHold.SetPosition(1, Vector3.Lerp(finalLinea, inicio, progreso));
