@@ -191,9 +191,9 @@ MonoBehaviour:
   player: {fileID: 0}
   puntos: []
   puntoAtaque: {fileID: 0}
-  tiempoEntrePasos: 0.6
-  tiempoEnAtaque: 0.6
-  velocidad: 7
+  beatsPorPaso: 1
+  tiempoEnAtaque: 0.45
+  velocidad: 15
   pasosAdelante: 1
   pasosAtras: 0
   retrocesoPorGolpe: 0
