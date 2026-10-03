@@ -1,0 +1,60 @@
+CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication
+
+Metal Fence Kit, version 1.2
+
+The person who associated a work with this deed has dedicated the work to the
+public domain by waiving all of his or her rights to the work worldwide under
+copyright law, including all related and neighboring rights, to the extent
+allowed by law.
+
+You can copy, modify, distribute and perform the work, even for commercial
+purposes, all without asking permission.
+
+Full legal text:
+https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+--------------------------------------------------------------------------
+SCOPE
+
+This dedication covers every file in this package:
+
+  glb/SlidingGate.glb
+  glb/DoubleGate.glb
+  glb/PedestrianGate.glb
+  glb/Fence_Panel_2m.glb
+  glb/Fence_Panel_1m.glb
+  glb/Fence_Post.glb
+  glb/Fence_Post_Corner.glb
+  textures/*.png                (36 files)
+  src/sliding_gate_gen.py
+  src/fence_kit_gen.py
+  MetalFenceKit.blend
+  previews/*
+  README.md, CHANGELOG.md, CREDITS.md
+
+--------------------------------------------------------------------------
+AUTHORSHIP AND PROVENANCE
+
+All geometry and all textures are original work created for this package.
+
+  * No third-party models, scans, photographs or textures were used.
+  * The textures are bakes of procedural Blender shaders. No photographic
+    source material and no image generators were involved.
+  * The geometry is produced deterministically by the two Python generators
+    included in src/. Nothing was sampled from a 3D generative model.
+
+No real-world logos, trademarks or protected designs are depicted. The gates
+and fence are generic constructions, not reproductions of any manufacturer's
+product.
+
+--------------------------------------------------------------------------
+AI DISCLOSURE
+
+The generator code was written in an agent-assisted workflow: an AI assistant
+(Claude) authored the Python that builds the geometry, driving Blender through
+an MCP bridge. The output is code-authored geometry, not generated geometry -
+but the distinction matters to some platforms, so it is stated plainly here
+rather than buried.
+
+If you redistribute this package on a platform that requires AI disclosure,
+please carry this section over.
