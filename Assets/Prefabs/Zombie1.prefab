@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87533dc89d934b4cb87379ce6e2e829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vida
-  golpesMaximos: 3
+  golpesMaximos: 1
 --- !u!70 &3332223656519113991
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -187,8 +187,8 @@ MonoBehaviour:
   player: {fileID: 0}
   puntos: []
   puntoAtaque: {fileID: 0}
-  tiempoEntrePasos: 0.4
-  tiempoEnAtaque: 0.4
+  tiempoEntrePasos: 0.7
+  tiempoEnAtaque: 0.7
   pasosAdelante: 1
   pasosAtras: 0
-  retrocesoPorGolpe: 1
+  retrocesoPorGolpe: 0
