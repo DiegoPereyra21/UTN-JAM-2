@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -189,13 +189,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombiePuntos
   player: {fileID: 0}
+  velocidad: 7
   puntos: []
   puntoAtaque: {fileID: 0}
-  tiempoEntrePasos: 0.7
-  tiempoEnAtaque: 0.7
+  tiempoEntrePasos: 0.6
+  tiempoEnAtaque: 0.6
   pasosAdelante: 1
   pasosAtras: 0
   retrocesoPorGolpe: 0
+  morirTrasAtacar: 1
 --- !u!50 &8349128205867804682
 Rigidbody2D:
   serializedVersion: 5

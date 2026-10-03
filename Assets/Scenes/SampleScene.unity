@@ -846,7 +846,7 @@ MonoBehaviour:
   - {fileID: 84510512}
   - {fileID: 1334594650}
   puntoAtaque: {fileID: 2025193935}
-  tiempoEntreSpawns: 0.7
+  tiempoEntreSpawns: 0.6
 --- !u!4 &1553491989
 Transform:
   m_ObjectHideFlags: 0

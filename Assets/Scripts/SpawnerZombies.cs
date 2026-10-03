@@ -8,10 +8,15 @@ public class SpawnerZombies : MonoBehaviour
     [SerializeField] private Transform puntoAtaque;
     [SerializeField] private float tiempoEntreSpawns = 3f;
 
+
+
     private float proximoSpawn;
 
     void Update()
     {
+        //si el player murio deja de spawnear
+        if (player == null) return;
+
         // espera hasta que pase el tiempo
         if (Time.time < proximoSpawn) return;
         proximoSpawn = Time.time + tiempoEntreSpawns;

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,11 +64,16 @@ public class Player2D : MonoBehaviour
 
         //verifica si hay algo ahi
         Collider2D[] golpeados = Physics2D.OverlapCircleAll(punto.position, radioGolpe, capaEnemigos);
+        //guarda a quien ya golpee, si un zombi tiene varios colliders lo golpeaba varias veces
+        HashSet<Vida> yaGolpeados = new HashSet<Vida>();
         foreach (Collider2D c in golpeados)
         {
-            //quita vida
             Vida vida = c.GetComponentInParent<Vida>();
-            if (vida != null) vida.RecibirGolpe();
+            //si no tiene vida o ya lo golpee, sigue con el otro
+            if (vida == null || !yaGolpeados.Add(vida)) continue;
+
+            //quita vida
+            vida.RecibirGolpe();
             //los hace retroceder 1 espacio
             ZombiePuntos zombie = c.GetComponentInParent<ZombiePuntos>();
             if (zombie != null) zombie.Retroceder();
