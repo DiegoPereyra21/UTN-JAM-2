@@ -1,0 +1,231 @@
+/* =========================================================
+   BUILDING HUD
+   ========================================================= */
+
+#BuildingHUD {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+/* =========================================================
+   BUTTONS CONTAINER
+   ========================================================= */
+
+#ButtonsContainer {
+    position: absolute;
+
+    right: 40px;
+    bottom: 40px;
+
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 18px;
+
+    width: auto;
+    height: 100px;
+}
+
+
+/* =========================================================
+   BOTONES INFERIORES
+   ========================================================= */
+
+#BuildButton,
+#InventoryButton,
+#MapButton,
+#ExitButton {
+    width: 100px;
+    height: 100px;
+
+    flex-shrink: 0;
+
+    background-color: rgba(25, 23, 20, 0.92);
+
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+
+    border-top-color: rgba(190, 170, 130, 0.75);
+    border-right-color: rgba(190, 170, 130, 0.75);
+    border-bottom-color: rgba(190, 170, 130, 0.75);
+    border-left-color: rgba(190, 170, 130, 0.75);
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    color: rgb(225, 215, 190);
+
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================================
+   ICONOS INFERIORES
+   ========================================================= */
+
+#BuildButton #Icon,
+#InventoryButton #Icon,
+#MapButton #Icon {
+    position: absolute;
+
+    width: 70px;
+    height: 80px;
+
+    left: 50%;
+    top: 50%;
+
+    translate: -50% -50%;
+
+    margin: 0;
+    padding: 0;
+
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+
+/* =========================================================
+   EXIT
+   ========================================================= */
+
+#ExitButton Label {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    -unity-text-align: middle-center;
+
+    font-size: 32px;
+}
+
+
+/* =========================================================
+   HOVER INFERIORES
+   ========================================================= */
+
+#BuildButton:hover,
+#InventoryButton:hover,
+#MapButton:hover,
+#ExitButton:hover {
+    background-color: rgba(55, 48, 40, 0.96);
+
+    border-top-color: rgb(220, 195, 145);
+    border-right-color: rgb(220, 195, 145);
+    border-bottom-color: rgb(220, 195, 145);
+    border-left-color: rgb(220, 195, 145);
+
+    color: rgb(245, 235, 210);
+}
+
+
+/* =========================================================
+   PRESSED INFERIORES
+   ========================================================= */
+
+#BuildButton:active,
+#InventoryButton:active,
+#MapButton:active,
+#ExitButton:active {
+    background-color: rgba(15, 14, 12, 0.98);
+}
+
+
+/* =========================================================
+   ROOF BUTTON
+   ========================================================= */
+
+#RoofButton {
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: 40px;
+    top: 40px;
+
+    background-color: rgba(25, 23, 20, 0.92);
+
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+
+    border-top-color: rgba(190, 170, 130, 0.75);
+    border-right-color: rgba(190, 170, 130, 0.75);
+    border-bottom-color: rgba(190, 170, 130, 0.75);
+    border-left-color: rgba(190, 170, 130, 0.75);
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    color: rgb(225, 215, 190);
+
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================================
+   ROOF ICON
+   ========================================================= */
+
+#RoofButton #Image {
+    position: absolute;
+
+    width: 60px;
+    height: 60px;
+
+    left: 50%;
+    top: 50%;
+
+    translate: -50% -50%;
+
+    margin: 0;
+    padding: 0;
+
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+
+/* =========================================================
+   ROOF HOVER
+   ========================================================= */
+
+#RoofButton:hover {
+    background-color: rgba(55, 48, 40, 0.96);
+
+    border-top-color: rgb(220, 195, 145);
+    border-right-color: rgb(220, 195, 145);
+    border-bottom-color: rgb(220, 195, 145);
+    border-left-color: rgb(220, 195, 145);
+
+    color: rgb(245, 235, 210);
+}
+
+
+/* =========================================================
+   ROOF PRESSED
+   ========================================================= */
+
+#RoofButton:active {
+    background-color: rgba(15, 14, 12, 0.98);
+}
