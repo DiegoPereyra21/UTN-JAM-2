@@ -1,7 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Building/BuildingHUD.uss?fileID=7433441132597879392&amp;guid=9a995b7ad77f8cd44a617d358c9cece6&amp;type=3#BuildingHUD"/>
-    <ui:Button text="" name="RoofButton" style="top: 10px; right: 6px; height: 80px; width: 74px;">
-        <ui:Image style="background-image: resource(&quot;#1 - Transparent Icons_18&quot;); height: 58px; width: 58px; background-color: rgb(255, 255, 255);"/>
+    <ui:Button text="" name="RoofButton" style="top: 10px; right: 6px; height: 80px; width: 74px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.369); background-color: rgba(118, 118, 118, 0.92);">
+        <ui:VisualElement name="Background" style="flex-grow: 1;"/>
+        <ui:Image style="background-image: resource(&quot;#1 - Transparent Icons_18&quot;); height: 64px; width: 66px; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); margin-bottom: 6px;"/>
     </ui:Button>
     <ui:VisualElement name="ButtonsContainer" style="flex-grow: 1;">
         <ui:Button text="" name="BuildButton">
