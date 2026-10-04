@@ -240,3 +240,215 @@ bottom: 0;
 
 background-color: rgb(180, 180, 180);
 }
+
+
+/* =========================================================
+   LEVEL SELECT PANEL
+   ========================================================= */
+
+#LevelsPanel {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 430px;
+    height: 470px;
+
+    translate: -50% -50%;
+
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 35px;
+    padding-right: 35px;
+
+    background-color: rgba(25, 23, 20, 0.96);
+
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+
+    border-top-color: rgba(190, 170, 130, 0.75);
+    border-right-color: rgba(190, 170, 130, 0.75);
+    border-bottom-color: rgba(190, 170, 130, 0.75);
+    border-left-color: rgba(190, 170, 130, 0.75);
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   LEVEL BUTTONS
+   ========================================================= */
+
+#Level1Button,
+#Level2Button,
+#Level3Button {
+    width: 340px;
+    height: 70px;
+
+    margin-bottom: 12px;
+
+    flex-shrink: 0;
+
+    background-color: rgba(45, 40, 34, 0.96);
+
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+
+    border-top-color: rgba(190, 170, 130, 0.65);
+    border-right-color: rgba(190, 170, 130, 0.65);
+    border-bottom-color: rgba(190, 170, 130, 0.65);
+    border-left-color: rgba(190, 170, 130, 0.65);
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    color: rgb(225, 215, 190);
+
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================================
+   LEVEL TEXT
+   ========================================================= */
+
+#Level1Button Label,
+#Level2Button Label,
+#Level3Button Label {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 27px;
+
+    color: rgb(225, 215, 190);
+
+    -unity-text-align: middle-center;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+#Level1Button:hover,
+#Level2Button:hover,
+#Level3Button:hover {
+    background-color: rgba(65, 56, 45, 0.98);
+
+    border-top-color: rgb(220, 195, 145);
+    border-right-color: rgb(220, 195, 145);
+    border-bottom-color: rgb(220, 195, 145);
+    border-left-color: rgb(220, 195, 145);
+
+    color: rgb(245, 235, 210);
+}
+
+
+/* =========================================================
+   PRESSED
+   ========================================================= */
+
+#Level1Button:active,
+#Level2Button:active,
+#Level3Button:active {
+    background-color: rgba(20, 18, 15, 0.98);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+#LevelsCloseButton {
+    width: 340px;
+    height: 55px;
+
+    margin-top: 25px;
+
+    background-color: rgba(75, 35, 32, 0.92);
+
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+
+    border-top-color: rgba(170, 120, 100, 0.65);
+    border-right-color: rgba(170, 120, 100, 0.65);
+    border-bottom-color: rgba(170, 120, 100, 0.65);
+    border-left-color: rgba(170, 120, 100, 0.65);
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    color: rgb(225, 205, 190);
+
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================================
+   CLOSE TEXT
+   ========================================================= */
+
+#LevelsCloseButton Label {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 22px;
+
+    color: rgb(225, 205, 190);
+
+    -unity-text-align: middle-center;
+}
+
+
+/* =========================================================
+   CLOSE HOVER
+   ========================================================= */
+
+#LevelsCloseButton:hover {
+    background-color: rgba(105, 45, 40, 0.96);
+
+    border-top-color: rgb(210, 150, 125);
+    border-right-color: rgb(210, 150, 125);
+    border-bottom-color: rgb(210, 150, 125);
+    border-left-color: rgb(210, 150, 125);
+
+    color: rgb(245, 225, 210);
+}
+
+
+/* =========================================================
+   CLOSE PRESSED
+   ========================================================= */
+
+#LevelsCloseButton:active {
+    background-color: rgba(45, 22, 20, 0.98);
+}
