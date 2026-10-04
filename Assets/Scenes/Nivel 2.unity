@@ -212,52 +212,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 984350832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &324479867
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 324479869}
-  - component: {fileID: 324479868}
-  m_Layer: 0
-  m_Name: ControlNivel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &324479868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324479867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66cc066b5ebb21a45a8e5fc408be0f24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ControlNivel
-  jugador: {fileID: 1937807593}
-  segundosTrasMorir: 2
---- !u!4 &324479869
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324479867}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492486426
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +936,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 984350832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1403720730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403720732}
+  - component: {fileID: 1403720731}
+  m_Layer: 0
+  m_Name: ControlNivel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1403720731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403720730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cc066b5ebb21a45a8e5fc408be0f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlNivel
+  jugador: {fileID: 1937807593}
+  segundosTrasMorir: 2
+--- !u!4 &1403720732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403720730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1542974983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   jugador: {fileID: 2004538755311179131}
   bpm: 106
   offset: 0
-  cuentaInicial: 2
+  cuentaInicial: 3.22
   metronomo: 1
   click: {fileID: 8300000, guid: ea84fa3e468b283438def279465d271d, type: 3}
 --- !u!4 &1542974986
@@ -1364,6 +1364,7 @@ MonoBehaviour:
   sonidoBajo: {fileID: 0}
   sonidoMedio: {fileID: 0}
   sonidoAlto: {fileID: 0}
+  tiempoMuerte: 1.5
 --- !u!4 &600702765188304963
 Transform:
   m_ObjectHideFlags: 0
@@ -1692,4 +1693,4 @@ SceneRoots:
   - {fileID: 762634249}
   - {fileID: 2004538755311179131}
   - {fileID: 1937807583}
-  - {fileID: 324479869}
+  - {fileID: 1403720732}

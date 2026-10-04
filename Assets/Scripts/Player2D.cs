@@ -115,12 +115,14 @@ public class Player2D : MonoBehaviour
             proximoGolpe = RelojMusica.Instance.BeatActual + cooldownBeats; // empieza el cooldown (en beats)
             Golpear();
         }
+        //se queda en el ultimo frame al holdear el ataque
+        animator.SetBool("Holding", zombieSujeto != null);
     }
 
     void Golpear()
     {
-        //animacion de ataque, suena y anima aunq no golpee a nada
-        animator.SetTrigger("Attack");
+        //animacion de ataque aunq no pegue a algo, no se reinicia si ya esta sujetando
+        if (zombieSujeto == null) animator.SetTrigger("Attack");
         //ifs para elegir donde golpear y que sonido usar
         Transform punto = golpeMedio;
         AudioClip sonido = sonidoMedio;

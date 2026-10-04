@@ -187,7 +187,7 @@ MonoBehaviour:
   capaEnemigos:
     serializedVersion: 2
     m_Bits: 64
-  alturaMaxima: 2.3
+  alturaMaxima: 2
   beatsSubida: 0.15
   beatsArriba: 0.5
   gravedadCaida: 20
@@ -195,6 +195,7 @@ MonoBehaviour:
   sonidoBajo: {fileID: 0}
   sonidoMedio: {fileID: 0}
   sonidoAlto: {fileID: 0}
+  tiempoMuerte: 1.5
 --- !u!114 &299067785533382267
 MonoBehaviour:
   m_ObjectHideFlags: 0
