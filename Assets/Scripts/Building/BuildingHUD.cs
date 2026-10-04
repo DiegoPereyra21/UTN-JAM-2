@@ -7,14 +7,20 @@ public class BuildingHUD : MonoBehaviour
 
     private Button buildButton;
     private Button roofButton;
+    private VisualElement roofBackground;
 
     private void Awake()
     {
         uiDocument = GetComponent<UIDocument>();
     }
 
-    private void Update()
+    private void Start()
     {
+        if (BuildingManager.Instance != null)
+        {
+            BuildingManager.Instance.OnBuildingChanged += UpdateRoofButton;
+        }
+
         UpdateRoofButton();
     }
 
@@ -24,6 +30,14 @@ public class BuildingHUD : MonoBehaviour
 
         buildButton = root.Q<Button>("BuildButton");
         roofButton = root.Q<Button>("RoofButton");
+        roofBackground = root.Q<VisualElement>("Background");
+
+        if (roofBackground == null)
+        {
+            Debug.LogError(
+                "BuildingHUD: No se encontró Background."
+            );
+        }
 
         if (buildButton != null)
         {
@@ -31,7 +45,9 @@ public class BuildingHUD : MonoBehaviour
         }
         else
         {
-            Debug.LogError("BuildingHUD: No se encontró BuildButton.");
+            Debug.LogError(
+                "BuildingHUD: No se encontró BuildButton."
+            );
         }
 
         if (roofButton != null)
@@ -40,13 +56,10 @@ public class BuildingHUD : MonoBehaviour
         }
         else
         {
-            Debug.LogError("BuildingHUD: No se encontró RoofButton.");
+            Debug.LogError(
+                "BuildingHUD: No se encontró RoofButton."
+            );
         }
-
-        if (BuildingManager.Instance != null)
-            BuildingManager.Instance.OnBuildingChanged += UpdateRoofButton;
-
-        UpdateRoofButton();
     }
 
     private void OnDisable()
@@ -62,14 +75,19 @@ public class BuildingHUD : MonoBehaviour
         }
 
         if (BuildingManager.Instance != null)
+        {
             BuildingManager.Instance.OnBuildingChanged -= UpdateRoofButton;
+        }
     }
 
     private void OnBuildClicked()
     {
         if (BuildingManager.Instance == null)
         {
-            Debug.LogError("BuildingHUD: No existe BuildingManager.");
+            Debug.LogError(
+                "BuildingHUD: No existe BuildingManager."
+            );
+
             return;
         }
 
@@ -95,8 +113,34 @@ public class BuildingHUD : MonoBehaviour
             return;
         }
 
-        roofButton.SetEnabled(
-            BuildingManager.Instance.IsRoofBuilt()
-        );
+        bool roofBuilt =
+            BuildingManager.Instance.IsRoofBuilt();
+
+        roofButton.SetEnabled(roofBuilt);
+
+        if (roofBackground == null)
+            return;
+
+        if (!roofBuilt)
+        {
+            roofBackground.style.backgroundColor =
+                Color.gray;
+
+            return;
+        }
+
+        bool roofVisible =
+            BuildingManager.Instance.IsRoofVisible();
+
+        if (roofVisible)
+        {
+            roofBackground.style.backgroundColor =
+                new Color(0.27f, 0.7f, 0.35f);
+        }
+        else
+        {
+            roofBackground.style.backgroundColor =
+                new Color(0.75f, 0.27f, 0.27f);
+        }
     }
 }

@@ -70,6 +70,7 @@ public class BuildingManager : MonoBehaviour
         }
 
         RestoreRoofVisibility();
+        OnBuildingChanged?.Invoke();
     }
 
     public void TryBuildNext()
@@ -313,14 +314,18 @@ public class BuildingManager : MonoBehaviour
 
             part.finalObject.SetActive(newVisibility);
 
-            // estado del techo
-
             if (BuildingState.Instance != null)
             {
                 BuildingState.Instance.SetRoofVisible(
                     newVisibility
                 );
             }
+
+            Debug.Log(
+                $"Roof {(newVisibility ? "VISIBLE" : "OCULTO")}"
+            );
+
+            OnBuildingChanged?.Invoke();
 
             return;
         }
@@ -346,5 +351,21 @@ public class BuildingManager : MonoBehaviour
 
             return;
         }
+    }
+
+    public bool IsRoofVisible()
+    {
+        foreach (BuildingPart part in buildingParts)
+        {
+            if (part == null || !part.isRoof)
+                continue;
+
+            if (!part.isBuilt || part.finalObject == null)
+                return false;
+
+            return part.finalObject.activeSelf;
+        }
+
+        return false;
     }
 }
