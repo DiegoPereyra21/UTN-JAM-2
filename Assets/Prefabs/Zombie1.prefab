@@ -86,9 +86,9 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.3439424, g: 1, b: 0, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: -350908408369970039, guid: 65471d7e26b11d4479a224589536b91b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
@@ -198,6 +198,7 @@ MonoBehaviour:
   requiereMantener: 0
   turnosParaMatar: 3
   lineaHold: {fileID: 0}
+  sonidoHoldCompleto: {fileID: 0}
   cabeza: {fileID: 0}
 --- !u!114 &6389422088176359700
 MonoBehaviour:

@@ -105,6 +105,7 @@ MonoBehaviour:
   requiereMantener: 1
   turnosParaMatar: 3
   lineaHold: {fileID: 5209539264759466348}
+  sonidoHoldCompleto: {fileID: 0}
   cabeza: {fileID: 2838683583416756130}
 --- !u!50 &1297096903277860955
 Rigidbody2D:
@@ -303,8 +304,8 @@ Transform:
   m_GameObject: {fileID: 6965106467316367717}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1273, z: 0}
-  m_LocalScale: {x: 1, y: 2.1272974, z: 1}
+  m_LocalPosition: {x: 0, y: 0.26976252, z: 0}
+  m_LocalScale: {x: 1, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2838683583416756130}
@@ -359,9 +360,9 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.95380974, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 1553940418269799609, guid: 1b825dd19d04fea4ca3ae2a4a4a002de, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
