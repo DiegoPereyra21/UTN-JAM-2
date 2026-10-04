@@ -5,18 +5,24 @@ public class Vida : MonoBehaviour
 {
     [SerializeField] private int golpesMaximos = 6;
 
-    private int golpesActuales;
+    private int golpesActuales = -1;
 
     public event Action<int> OnHealthChanged;
     public event Action OnDeath;
 
     private void Awake()
     {
-        golpesActuales = golpesMaximos;
+        Inicializar();
+    }
+
+    private void Inicializar()
+    {
+        if (golpesActuales < 0) golpesActuales = golpesMaximos;
     }
 
     public void RecibirGolpe()
     {
+        Inicializar();
         if (golpesActuales <= 0)
             return;
 
@@ -32,11 +38,13 @@ public class Vida : MonoBehaviour
 
     public bool IsDead()
     {
+        Inicializar();
         return golpesActuales <= 0;
     }
 
     public int GetCurrentHealth()
     {
+        Inicializar();
         return golpesActuales;
     }
 
