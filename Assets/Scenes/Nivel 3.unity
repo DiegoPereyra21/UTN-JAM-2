@@ -434,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8432770760457710825, guid: 72260da5b65f62f4bb7c58aaec2adf06, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -916,8 +916,8 @@ Transform:
   m_GameObject: {fileID: 1331817839}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21, y: -5.15, z: 0}
-  m_LocalScale: {x: 27.775974, y: 1.9625, z: 1}
+  m_LocalPosition: {x: 0.21, y: -5.1412, z: 0}
+  m_LocalScale: {x: 27.775974, y: 1.9799663, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1028,7 +1028,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 43dcb15b3b3c4d34c9ab022bde65883b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 28fbd183a98961f458cc69b61fd5cfa9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelojMusica
   musica: {fileID: 1542974984}
   jugador: {fileID: 2004538755311179131}
-  bpm: 106
+  bpm: 126
   offset: 0
   cuentaInicial: 3.22
   metronomo: 1
