@@ -38,6 +38,10 @@ public class RelojMusica : MonoBehaviour
     //beat actual x decimas
     public float BeatActual => (float)((TiempoReloj - dspInicio - offset) * bpm / 60.0);
     public float SegundosPorBeat => 60f / bpm;
+    //posicion de la cancion en segundos
+    public float SegundosCancion => (float)(TiempoReloj - dspInicio);
+    //largo de la cancion en segundos, poner si o si, sino nunca termina
+    public float DuracionCancion => musica.clip != null ? musica.clip.length : float.MaxValue;
 
     void Awake()
     {

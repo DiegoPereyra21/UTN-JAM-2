@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
   menuCharacter: {fileID: 8818233396556161713}
-  nextSceneName: Nivel 1
+  nextSceneName: Building
 --- !u!1 &1770672814
 GameObject:
   m_ObjectHideFlags: 0

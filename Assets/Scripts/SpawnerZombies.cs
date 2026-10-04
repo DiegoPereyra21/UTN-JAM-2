@@ -11,6 +11,8 @@ public class SpawnerZombies : MonoBehaviour
     [SerializeField] private BuildingLootTable lootTableLevel1;
     [SerializeField] private BuildingLootTable lootTableLevel2;
     [SerializeField] private BuildingLootTable lootTableLevel3;
+    //ultimos segundos de la cancion en los que ya no spawnean zombis
+    [SerializeField] private float segundosSinSpawn = 5f;
 
     //beats que pasaron desde el ultimo spawn
     private int beatsContados;
@@ -34,6 +36,9 @@ public class SpawnerZombies : MonoBehaviour
     {
         //si el player murio deja de spawnear
         if (player == null) return;
+
+        //ultimos segundos de la cancion, donde no spawnean zombies
+        if (RelojMusica.Instance.DuracionCancion - RelojMusica.Instance.SegundosCancion <= segundosSinSpawn) return;
 
         //pausa despues del zombi de mantener, para que no se choquen
         if (beatsPausa > 0)

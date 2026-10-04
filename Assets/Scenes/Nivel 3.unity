@@ -936,7 +936,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 984350832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1403720730
+--- !u!1 &1387586089
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -944,8 +944,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1403720732}
-  - component: {fileID: 1403720731}
+  - component: {fileID: 1387586091}
+  - component: {fileID: 1387586090}
   m_Layer: 0
   m_Name: ControlNivel
   m_TagString: Untagged
@@ -953,13 +953,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1403720731
+--- !u!114 &1387586090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403720730}
+  m_GameObject: {fileID: 1387586089}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66cc066b5ebb21a45a8e5fc408be0f24, type: 3}
@@ -967,13 +967,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ControlNivel
   jugador: {fileID: 1937807593}
   segundosTrasMorir: 2
---- !u!4 &1403720732
+--- !u!4 &1387586091
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403720730}
+  m_GameObject: {fileID: 1387586089}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1692,4 +1692,4 @@ SceneRoots:
   - {fileID: 762634249}
   - {fileID: 2004538755311179131}
   - {fileID: 1937807583}
-  - {fileID: 1403720732}
+  - {fileID: 1387586091}
