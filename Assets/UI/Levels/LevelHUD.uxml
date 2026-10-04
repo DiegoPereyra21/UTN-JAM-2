@@ -1,30 +1,30 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Levels/LevelHUD.uss?fileID=7433441132597879392&amp;guid=05cdfc349df318b40bd6d554dd4b5ec3&amp;type=3#LevelHUD"/>
     <ui:VisualElement name="ItemsContainer" style="flex-grow: 1; flex-direction: row; align-self: auto; align-content: flex-start; align-items: flex-start;">
-        <ui:VisualElement name="HealthContainer" style="flex-grow: 1; white-space: normal; text-overflow: clip; -unity-text-align: upper-left; flex-direction: row; flex-wrap: nowrap; align-self: auto; justify-content: flex-start; align-content: auto; position: absolute; left: 22px;">
-            <ui:VisualElement name="Heart_01" class="heart heart-full" style="flex-grow: 1;"/>
-            <ui:VisualElement name="Heart_02" class="heart heart-full" style="flex-grow: 1;"/>
-            <ui:VisualElement name="Heart_03" class="heart heart-full" style="flex-grow: 1;"/>
+        <ui:VisualElement name="HealthContainer" style="flex-grow: 1; white-space: normal; text-overflow: clip; -unity-text-align: upper-left; flex-direction: row; flex-wrap: nowrap; align-self: auto; justify-content: flex-start; align-content: auto; position: absolute; left: 22px; height: 96px; width: 316px;">
+            <ui:VisualElement name="Heart_01" class="heart heart-full" style="flex-grow: 1; height: 75px;"/>
+            <ui:VisualElement name="Heart_02" class="heart heart-full" style="flex-grow: 1; height: 75px;"/>
+            <ui:VisualElement name="Heart_03" class="heart heart-full" style="flex-grow: 1; height: 75px;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="TitleContainer" style="flex-grow: 1;">
-            <ui:Label text="Titulo" name="TitleLabel" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 65px; -unity-font-style: normal;"/>
+        <ui:VisualElement name="TitleContainer" style="flex-grow: 1; top: 112px;">
+            <ui:Label text="Titulo" name="TitleLabel" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 95px; -unity-font-style: normal;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="ResourcesContainer" style="flex-grow: 1; right: 24px;">
+        <ui:VisualElement name="ResourcesContainer" style="flex-grow: 1; right: 95px; top: 13px;">
             <ui:VisualElement name="Resource_01" style="flex-grow: 1; flex-direction: column; flex-wrap: nowrap;">
                 <ui:Image name="Icon" style="background-image: resource(&quot;Icons/oak_plank&quot;);"/>
-                <ui:Label text="0" name="Amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+                <ui:Label text="0" name="Amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px;"/>
             </ui:VisualElement>
             <ui:VisualElement name="Resource_02" style="flex-grow: 1;">
                 <ui:Image name="Icon" style="background-image: resource(&quot;Icons/stone_block&quot;);"/>
-                <ui:Label text="0" name="Amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+                <ui:Label text="0" name="Amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px;"/>
             </ui:VisualElement>
             <ui:VisualElement name="Resource_03" style="flex-grow: 1;">
                 <ui:Image name="Icon" style="background-image: resource(&quot;Icons/nail&quot;);"/>
-                <ui:Label text="0" name="Amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+                <ui:Label text="0" name="Amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px;"/>
             </ui:VisualElement>
             <ui:VisualElement name="Resource_04" style="flex-grow: 1;">
                 <ui:Image name="Icon" style="background-image: resource(&quot;Icons/silk_thread&quot;);"/>
-                <ui:Label text="0" name="Amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+                <ui:Label text="0" name="Amount" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
