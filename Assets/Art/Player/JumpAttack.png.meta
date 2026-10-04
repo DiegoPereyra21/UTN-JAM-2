@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 437f242d154f3fe48a7ad2c3e9d1cb4a
+guid: 60034e2a67dbc354b87e85c2cd78ab79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7008412969330441016
-    second: Attack_0
+      213: 2540389110289181886
+    second: JumpAttack_0
   - first:
-      213: -7763475090823894447
-    second: Attack_1
-  - first:
-      213: 302641331129538988
-    second: Attack_2
+      213: 8483976198845052953
+    second: JumpAttack_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,67 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: JumpAttack_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 0
-        width: 67
-        height: 67
+        x: 23
+        y: 22
+        width: 59
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c481db598d1dbe90800000000000000
-      internalID: -7008412969330441016
+      spriteID: ebcae0eaf66414320800000000000000
+      internalID: 2540389110289181886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: JumpAttack_1
       rect:
         serializedVersion: 2
-        x: 152
-        y: 0
-        width: 67
-        height: 67
+        x: 122
+        y: 22
+        width: 65
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15a29dc9988924490800000000000000
-      internalID: -7763475090823894447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack_2
-      rect:
-        serializedVersion: 2
-        x: 283
-        y: 0
-        width: 67
-        height: 67
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca9d35cefa2333400800000000000000
-      internalID: 302641331129538988
+      spriteID: 918370f17632db570800000000000000
+      internalID: 8483976198845052953
       vertices: []
       indices: 
       edges: []
@@ -188,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: eba87fdac5e6a3c43add401a5e42eced
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Attack_0: -7008412969330441016
-      Attack_1: -7763475090823894447
-      Attack_2: 302641331129538988
+      JumpAttack_0: 2540389110289181886
+      JumpAttack_1: 8483976198845052953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

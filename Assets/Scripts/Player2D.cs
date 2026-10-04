@@ -96,6 +96,9 @@ public class Player2D : MonoBehaviour
             StartCoroutine(Saltar());
         }
 
+        //animacion de agachado (despues del salto, porque al saltar agachado se pone en false)
+        animator.SetBool("Crouching", agachado);
+
 
         //para q si suelta caiga el player
         bool apretando = Keyboard.current.dKey.isPressed || Mouse.current.leftButton.isPressed || Mouse.current.rightButton.isPressed || Mouse.current.middleButton.isPressed;

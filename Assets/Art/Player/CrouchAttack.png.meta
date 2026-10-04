@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 437f242d154f3fe48a7ad2c3e9d1cb4a
+guid: 3a85cdbea69d53c449b7fca19012f4f3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7008412969330441016
-    second: Attack_0
+      213: 4855458482818669801
+    second: CrouchAttack_0
   - first:
-      213: -7763475090823894447
-    second: Attack_1
+      213: -3826284547010511416
+    second: CrouchAttack_1
   - first:
-      213: 302641331129538988
-    second: Attack_2
+      213: 2559247519260230596
+    second: CrouchAttack_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,10 +119,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: CrouchAttack_0
       rect:
         serializedVersion: 2
-        x: 20
+        x: 21
         y: 0
         width: 67
         height: 67
@@ -134,17 +134,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c481db598d1dbe90800000000000000
-      internalID: -7008412969330441016
+      spriteID: 9ec501ac3cd026340800000000000000
+      internalID: 4855458482818669801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: CrouchAttack_1
       rect:
         serializedVersion: 2
-        x: 152
+        x: 102
         y: 0
         width: 67
         height: 67
@@ -156,17 +156,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15a29dc9988924490800000000000000
-      internalID: -7763475090823894447
+      spriteID: 8cd3fdd1a7e46eac0800000000000000
+      internalID: -3826284547010511416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_2
+      name: CrouchAttack_2
       rect:
         serializedVersion: 2
-        x: 283
+        x: 184
         y: 0
         width: 67
         height: 67
@@ -178,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca9d35cefa2333400800000000000000
-      internalID: 302641331129538988
+      spriteID: 4c34ecd2f06448320800000000000000
+      internalID: 2559247519260230596
       vertices: []
       indices: 
       edges: []
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: eba87fdac5e6a3c43add401a5e42eced
+    spriteID: 6f65e6ac7e1f43441af5a3a274523cda
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Attack_0: -7008412969330441016
-      Attack_1: -7763475090823894447
-      Attack_2: 302641331129538988
+      CrouchAttack_0: 4855458482818669801
+      CrouchAttack_1: -3826284547010511416
+      CrouchAttack_2: 2559247519260230596
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

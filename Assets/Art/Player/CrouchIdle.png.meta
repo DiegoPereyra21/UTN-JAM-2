@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 437f242d154f3fe48a7ad2c3e9d1cb4a
+guid: 4b44eb729f31a744cbd9bddc7b891932
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7008412969330441016
-    second: Attack_0
+      213: 2330147259476030876
+    second: CrouchIdle_0
   - first:
-      213: -7763475090823894447
-    second: Attack_1
+      213: 1221216068662974698
+    second: CrouchIdle_1
   - first:
-      213: 302641331129538988
-    second: Attack_2
+      213: -414445035469035489
+    second: CrouchIdle_2
+  - first:
+      213: -684758876726743674
+    second: CrouchIdle_3
+  - first:
+      213: 1861482574544531030
+    second: CrouchIdle_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,10 +125,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_0
+      name: CrouchIdle_0
       rect:
         serializedVersion: 2
-        x: 20
+        x: 21
         y: 0
         width: 67
         height: 67
@@ -134,17 +140,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c481db598d1dbe90800000000000000
-      internalID: -7008412969330441016
+      spriteID: c953b6b3698565020800000000000000
+      internalID: 2330147259476030876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_1
+      name: CrouchIdle_1
       rect:
         serializedVersion: 2
-        x: 152
+        x: 106
         y: 0
         width: 67
         height: 67
@@ -156,17 +162,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15a29dc9988924490800000000000000
-      internalID: -7763475090823894447
+      spriteID: ae8d7ae4b81a2f010800000000000000
+      internalID: 1221216068662974698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_2
+      name: CrouchIdle_2
       rect:
         serializedVersion: 2
-        x: 283
+        x: 179
         y: 0
         width: 67
         height: 67
@@ -178,8 +184,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca9d35cefa2333400800000000000000
-      internalID: 302641331129538988
+      spriteID: f18a1f1af689f3af0800000000000000
+      internalID: -414445035469035489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CrouchIdle_3
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68d28ebfd6f3f76f0800000000000000
+      internalID: -684758876726743674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CrouchIdle_4
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 0
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e6e4bf98055d910800000000000000
+      internalID: 1861482574544531030
       vertices: []
       indices: 
       edges: []
@@ -188,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: eba87fdac5e6a3c43add401a5e42eced
+    spriteID: 74dca4c70341ea9499ef02df200b6466
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Attack_0: -7008412969330441016
-      Attack_1: -7763475090823894447
-      Attack_2: 302641331129538988
+      CrouchIdle_0: 2330147259476030876
+      CrouchIdle_1: 1221216068662974698
+      CrouchIdle_2: -414445035469035489
+      CrouchIdle_3: -684758876726743674
+      CrouchIdle_4: 1861482574544531030
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
