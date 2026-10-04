@@ -1113,7 +1113,7 @@ MonoBehaviour:
   jugador: {fileID: 2004538755311179131}
   bpm: 106
   offset: 0
-  cuentaInicial: 2
+  cuentaInicial: 3.22
   metronomo: 1
   click: {fileID: 8300000, guid: ea84fa3e468b283438def279465d271d, type: 3}
 --- !u!4 &1542974986
@@ -1364,6 +1364,7 @@ MonoBehaviour:
   sonidoBajo: {fileID: 0}
   sonidoMedio: {fileID: 0}
   sonidoAlto: {fileID: 0}
+  tiempoMuerte: 1.5
 --- !u!4 &600702765188304963
 Transform:
   m_ObjectHideFlags: 0

@@ -28,6 +28,13 @@ public class Player2D : MonoBehaviour
     [SerializeField] private AudioClip sonidoBajo;
     [SerializeField] private AudioClip sonidoMedio;
     [SerializeField] private AudioClip sonidoAlto;
+
+    //animaciones
+    private Animator animator;
+    private bool muerto;
+    //espera antes de destruirse para que se vea la animacion de muerte, y clavar el tiempo de duracion de dead
+    [SerializeField] private float tiempoMuerte = 1.5f;
+
     //privadas
     private Rigidbody2D rb;
     private float gravedadNormal;
@@ -46,6 +53,8 @@ public class Player2D : MonoBehaviour
         gravedadNormal = rb.gravityScale;
         //usa el audiosource del propio player si no aisgno
         if (fuenteSonido == null) fuenteSonido = GetComponent<AudioSource>();
+        //busca el animator en el player o en su hijo
+        animator = GetComponentInChildren<Animator>();
     }
     void Start()
     {
@@ -60,15 +69,20 @@ public class Player2D : MonoBehaviour
         if (vida != null) vida.OnDeath -= Morir;
     }
 
-    //al morir se destruye poruqe sino no se frena todo
+    //al morir hace la animacion y despues se destruye asi se frena todo
     void Morir()
     {
-        Destroy(gameObject);
+        //por si lo golpean mas veces mientras muere
+        if (muerto) return;
+        muerto = true;
+        animator.SetTrigger("Dead");
+        Destroy(gameObject, tiempoMuerte);
     }
     void Update()
     {
-        //en pausa no se puede hacer nada
-        if (Time.timeScale == 0f) return;
+        //en pausa, muerto o en la intro (antes del primer beat) no se puede hacer nada
+        if (Time.timeScale == 0f || muerto || RelojMusica.Instance.BeatActual < 0f) return;
+
         //revisa si toca el suelo
         enSuelo = Physics2D.OverlapCircle(suelo.position, 0.1f, capaSuelo);
 
@@ -102,6 +116,8 @@ public class Player2D : MonoBehaviour
 
     void Golpear()
     {
+        //animacion de ataque, suena y anima aunq no golpee a nada
+        animator.SetTrigger("Attack");
         //ifs para elegir donde golpear y que sonido usar
         Transform punto = golpeMedio;
         AudioClip sonido = sonidoMedio;
@@ -159,6 +175,7 @@ public class Player2D : MonoBehaviour
 
     IEnumerator Saltar()
     {
+        animator.SetBool("Jumping", true);
         saltando = true;
         //max altura
         float yTope = transform.position.y + alturaMaxima;
@@ -187,5 +204,6 @@ public class Player2D : MonoBehaviour
         cayendo = false;
         rb.gravityScale = gravedadNormal;
         saltando = false;
+        animator.SetBool("Jumping", false);
     }
 }
