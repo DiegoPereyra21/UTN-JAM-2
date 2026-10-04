@@ -9,7 +9,14 @@ public class BuildingInventory : MonoBehaviour
     private Dictionary<BuildingItemData, int> items =
         new Dictionary<BuildingItemData, int>();
 
+    public IReadOnlyDictionary<BuildingItemData, int> Items => items;
     public event Action OnInventoryChanged;
+
+    // test
+    [Header("Test Inventory")]
+    [SerializeField] private List<BuildingItemData> testItems = new List<BuildingItemData>();
+
+    [SerializeField] private int testAmount = 50;
 
     private void Awake()
     {
@@ -77,5 +84,20 @@ public class BuildingInventory : MonoBehaviour
         items.Clear();
 
         OnInventoryChanged?.Invoke();
+    }
+
+    // test
+    [ContextMenu("Load Test Inventory")]
+    private void LoadTestInventory()
+    {
+        foreach (BuildingItemData item in testItems)
+        {
+            if (item == null)
+                continue;
+
+            AddItem(item, testAmount);
+        }
+
+        Debug.Log($"Inventario de prueba cargado: {testAmount} de cada material.");
     }
 }
