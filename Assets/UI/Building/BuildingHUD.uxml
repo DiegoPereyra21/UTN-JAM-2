@@ -13,7 +13,7 @@
         <ui:Button text="" name="MapButton">
             <ui:Image name="Icon" style="background-image: resource(&quot;#1 - Transparent Icons_214&quot;); width: 70px;"/>
         </ui:Button>
-        <ui:Button text="" name="ExitButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/redfont.ttf?fileID=12800000&amp;guid=129863aae11e38d48b56d4bf64d46ab1&amp;type=3#redfont&quot;); font-size: 30px;">
+        <ui:Button text="" name="ExitButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/redfont.ttf?fileID=12800000&amp;guid=129863aae11e38d48b56d4bf64d46ab1&amp;type=3#redfont&quot;); font-size: 30px; display: none;">
             <ui:Label text="X" style="right: 0; font-size: 60px; color: rgb(255, 23, 0); -unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); padding-left: 7px; padding-top: 13px; width: 80%; height: 80%;"/>
         </ui:Button>
     </ui:VisualElement>
