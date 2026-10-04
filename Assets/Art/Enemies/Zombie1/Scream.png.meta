@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 6e716435b507841428122580df5b10cb
+guid: 7981f104744035441a299420d9837f29
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -837275676153275556
-    second: Attack_2_0
+      213: -698445991872946889
+    second: Scream_0
   - first:
-      213: -8404040051688745268
-    second: Attack_2_1
+      213: -7753230735383741357
+    second: Scream_1
   - first:
-      213: -3526194569594660169
-    second: Attack_2_2
+      213: 1643304270273261513
+    second: Scream_2
   - first:
-      213: 950650993592285724
-    second: Attack_2_3
+      213: -7271889780145406184
+    second: Scream_3
+  - first:
+      213: -6433560901112551847
+    second: Scream_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,35 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack_2_0
+      name: Scream_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 0
-        width: 44
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5b1fc765366164f0800000000000000
-      internalID: -837275676153275556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack_2_1
-      rect:
-        serializedVersion: 2
-        x: 127
+        x: 21
         y: 0
         width: 39
-        height: 48
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc6dfe8791ade5b80800000000000000
-      internalID: -8404040051688745268
+      spriteID: 73d1e97221f9e46f0800000000000000
+      internalID: -698445991872946889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_2_2
+      name: Scream_1
       rect:
         serializedVersion: 2
-        x: 221
+        x: 112
         y: 0
-        width: 55
-        height: 45
+        width: 42
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ba1666b8b0701fc0800000000000000
-      internalID: -3526194569594660169
+      spriteID: 35cbfcb79bdf66490800000000000000
+      internalID: -7753230735383741357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack_2_3
+      name: Scream_2
       rect:
         serializedVersion: 2
-        x: 317
+        x: 207
         y: 0
-        width: 41
-        height: 45
+        width: 44
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +184,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1ab07aba04613d00800000000000000
-      internalID: 950650993592285724
+      spriteID: 9cf2587f6803ec610800000000000000
+      internalID: 1643304270273261513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scream_3
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 0
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81fb3a8e5ce051b90800000000000000
+      internalID: -7271889780145406184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scream_4
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 0
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9562858627667b6a0800000000000000
+      internalID: -6433560901112551847
       vertices: []
       indices: 
       edges: []
@@ -223,10 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Attack_2_0: -837275676153275556
-      Attack_2_1: -8404040051688745268
-      Attack_2_2: -3526194569594660169
-      Attack_2_3: 950650993592285724
+      Scream_0: -698445991872946889
+      Scream_1: -7753230735383741357
+      Scream_2: 1643304270273261513
+      Scream_3: -7271889780145406184
+      Scream_4: -6433560901112551847
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

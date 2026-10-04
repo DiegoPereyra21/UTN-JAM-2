@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7144598999076838305, guid: 6254bc1d9b0912648bd206b3b8d5d866, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 2067106472277281624}
   - component: {fileID: 8349128205867804682}
   m_Layer: 6
-  m_Name: Zombie20
+  m_Name: Zombie2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,6 +217,7 @@ MonoBehaviour:
   requiereMantener: 0
   turnosParaMatar: 3
   lineaHold: {fileID: 0}
+  sonidoHoldCompleto: {fileID: 0}
   cabeza: {fileID: 0}
 --- !u!50 &8349128205867804682
 Rigidbody2D:
