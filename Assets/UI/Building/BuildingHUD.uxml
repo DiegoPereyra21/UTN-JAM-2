@@ -1,5 +1,14 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Building/BuildingHUD.uss?fileID=7433441132597879392&amp;guid=9a995b7ad77f8cd44a617d358c9cece6&amp;type=3#BuildingHUD"/>
+    <ui:VisualElement name="Note" style="flex-grow: 1; height: 20px; max-height: 30px;">
+        <ui:Label text="Usa los materiales recolectados para construir la base &#10;y proteger a Choripan!" name="Label" emoji-fallback-support="true" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px; color: rgb(255, 255, 255); height: 74px; width: 1114px; padding-left: 8px;"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="LevelsPanel" style="flex-grow: 1; position: absolute; height: 457px; width: 397px; top: 618px; left: 1671px;">
+        <ui:Button text="Nivel 1" name="Level1Button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
+        <ui:Button text="Nivel 2" name="Level2Button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
+        <ui:Button text="Nivel 3" name="Level3Button" parse-escape-sequences="false" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
+        <ui:Button text="Cerrar mapa" name="LevelsCloseButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px; margin-top: 77px;"/>
+    </ui:VisualElement>
     <ui:Button text="" name="RoofButton" style="top: 10px; right: 6px; height: 80px; width: 74px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.369); background-color: rgba(118, 118, 118, 0.92);">
         <ui:VisualElement name="Background" style="flex-grow: 1;"/>
         <ui:Image style="background-image: resource(&quot;#1 - Transparent Icons_18&quot;); height: 64px; width: 66px; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); margin-bottom: 6px;"/>
@@ -18,12 +27,4 @@
             <ui:Label text="X" style="right: 0; font-size: 60px; color: rgb(255, 23, 0); -unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); padding-left: 7px; padding-top: 13px; width: 80%; height: 80%;"/>
         </ui:Button>
     </ui:VisualElement>
-    <ui:VisualElement name="LevelsPanel" style="flex-grow: 1; position: absolute; height: 457px; width: 397px; top: 618px; left: 1671px;">
-        <ui:Button text="Nivel 1" name="Level1Button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
-        <ui:Button text="Nivel 2" name="Level2Button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
-        <ui:Button text="Nivel 3" name="Level3Button" parse-escape-sequences="false" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
-        <ui:Button text="Cerrar mapa" name="LevelsCloseButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px; margin-top: 77px;"/>
-    </ui:VisualElement>
-    <ui:Label text="Usa los materiales recolectados para construir la base &#10;y proteger a Choripan!" name="Label" emoji-fallback-support="true" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px; color: rgb(255, 255, 255); height: 74px; width: 1114px; padding-left: 8px;"/>
-    <ui:VisualElement name="Note" style="flex-grow: 1;"/>
 </ui:UXML>
