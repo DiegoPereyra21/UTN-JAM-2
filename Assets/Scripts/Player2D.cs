@@ -23,6 +23,11 @@ public class Player2D : MonoBehaviour
     //cuanto espera arriba, en beats
     [SerializeField] private float beatsArriba = 1f;
     [SerializeField] private float gravedadCaida = 8f;
+    //sonidos del golpe segun la altura, capaz ponga el mismo sonido ent odos pero x las dudas
+    [SerializeField] private AudioSource fuenteSonido;
+    [SerializeField] private AudioClip sonidoBajo;
+    [SerializeField] private AudioClip sonidoMedio;
+    [SerializeField] private AudioClip sonidoAlto;
     //privadas
     private Rigidbody2D rb;
     private float gravedadNormal;
@@ -39,6 +44,8 @@ public class Player2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //guardo la gravedad pero igual no planeo cambiarla
         gravedadNormal = rb.gravityScale;
+        //usa el audiosource del propio player si no aisgno
+        if (fuenteSonido == null) fuenteSonido = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -77,15 +84,25 @@ public class Player2D : MonoBehaviour
 
     void Golpear()
     {
-        //ifs para elegir donde golpear 
+        //ifs para elegir donde golpear y que sonido usar
         Transform punto = golpeMedio;
-        if (agachado) punto = golpeBajo;
-        else if (saltando) punto = golpeAlto;
+        AudioClip sonido = sonidoMedio;
+        if (agachado)
+        {
+            punto = golpeBajo;
+            sonido = sonidoBajo;
+        }
+        else if (saltando)
+        {
+            punto = golpeAlto;
+            sonido = sonidoAlto;
+        }
 
         //verifica si hay algo ahi
         Collider2D[] golpeados = Physics2D.OverlapCircleAll(punto.position, radioGolpe, capaEnemigos);
         //guarda a quien ya golpee, si un zombi tiene varios colliders lo golpeaba varias veces
         HashSet<Vida> yaGolpeados = new HashSet<Vida>();
+        bool huboGolpe = false;
         foreach (Collider2D c in golpeados)
         {
             Vida vida = c.GetComponentInParent<Vida>();
@@ -101,12 +118,14 @@ public class Player2D : MonoBehaviour
                 {
                     zombieSujeto = zombie;
                     zombie.Sujetar();
+                    huboGolpe = true;
                 }
                 continue;
             }
 
             //quita vida
             vida.RecibirGolpe();
+            huboGolpe = true;
 
             if (!vida.IsDead())
             {
@@ -115,6 +134,9 @@ public class Player2D : MonoBehaviour
                     zombie.Retroceder();
             }
         }
+
+        //suena solo si le pego a algo
+        if (huboGolpe && fuenteSonido != null && sonido != null) fuenteSonido.PlayOneShot(sonido);
     }
 
     IEnumerator Saltar()

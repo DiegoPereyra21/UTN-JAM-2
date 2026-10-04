@@ -33,6 +33,8 @@ public class ZombiePuntos : MonoBehaviour
     [SerializeField] private int turnosParaMatar = 3;
     //linea gruesa q guia
     [SerializeField] private LineRenderer lineaHold;
+    //sonido al completar el hold
+    [SerializeField] private AudioClip sonidoHoldCompleto;
     //punto desde la cabeza, sino salia el line desde el pivot
     [SerializeField] private Transform cabeza;
     private bool sujetado;
@@ -109,7 +111,12 @@ public class ZombiePuntos : MonoBehaviour
 
         //si lo sujetan y llego el beat final del hold, muere
         if (sujetado && RelojMusica.Instance.BeatActual >= beatFinHold)
+        {
+            //suena en la camara porque el zombi se destruye, sino se cortaria
+            if (sonidoHoldCompleto != null && Camera.main != null)
+                AudioSource.PlayClipAtPoint(sonidoHoldCompleto, Camera.main.transform.position);
             Die();
+        }
     }
 
     //se llama en cada beat de la musica, aca se da el paso
