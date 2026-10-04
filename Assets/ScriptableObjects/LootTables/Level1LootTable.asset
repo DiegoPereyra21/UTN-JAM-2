@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingLootTable
   entries:
   - item: {fileID: 11400000, guid: 207e0b2017c8bed4aa55c3f2578526da, type: 2}
-    dropChance: 50
+    dropChance: 10
   - item: {fileID: 11400000, guid: 6ee565bc2f31676459c5becc5ebe5f62, type: 2}
-    dropChance: 50
+    dropChance: 20
