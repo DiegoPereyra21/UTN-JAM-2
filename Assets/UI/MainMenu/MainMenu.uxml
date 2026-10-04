@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=80059fe8169353d458ca3dfd1677b363&amp;type=3#MainMenu"/>
     <ui:VisualElement name="StartContainer" class="start-container" style="flex-grow: 1; flex-direction: column; flex-wrap: nowrap; justify-content: flex-end;">
-        <ui:Button text="CLICK PARA INICIAR" name="StartButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/redfont.ttf?fileID=12800000&amp;guid=129863aae11e38d48b56d4bf64d46ab1&amp;type=3#redfont&quot;); -unity-text-outline-width: 3px; font-size: 75px; text-shadow: 0 0 0 rgba(0, 0, 0, 0); white-space: nowrap; -unity-text-align: lower-center; bottom: 24px;"/>
+        <ui:Button text="CLICK PARA INICIAR" name="StartButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/redfont.ttf?fileID=12800000&amp;guid=129863aae11e38d48b56d4bf64d46ab1&amp;type=3#redfont&quot;); -unity-text-outline-width: 3px; font-size: 90px; text-shadow: 0 0 0 rgba(0, 0, 0, 0); white-space: nowrap; -unity-text-align: lower-center; bottom: 24px;"/>
     </ui:VisualElement>
 </ui:UXML>
