@@ -165,6 +165,9 @@ public class ZombiePuntos : MonoBehaviour
 
         yield return new WaitForSeconds(beatsEnAtaque * RelojMusica.Instance.SegundosPorBeat);
 
+        //si el golpe mato al player, se queda quieto en el punto de ataque
+        if (player == null) yield break;
+
         //si esta activado muere luego de atacar
         if (morirTrasAtacar)
         {

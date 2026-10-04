@@ -47,6 +47,24 @@ public class Player2D : MonoBehaviour
         //usa el audiosource del propio player si no aisgno
         if (fuenteSonido == null) fuenteSonido = GetComponent<AudioSource>();
     }
+    void Start()
+    {
+        //cuando la vida llega a 0 avisa y el player muere
+        Vida vida = GetComponent<Vida>();
+        if (vida != null) vida.OnDeath += Morir;
+    }
+
+    void OnDestroy()
+    {
+        Vida vida = GetComponent<Vida>();
+        if (vida != null) vida.OnDeath -= Morir;
+    }
+
+    //al morir se destruye poruqe sino no se frena todo
+    void Morir()
+    {
+        Destroy(gameObject);
+    }
     void Update()
     {
         //en pausa no se puede hacer nada
