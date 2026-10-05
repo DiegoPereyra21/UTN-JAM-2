@@ -41,8 +41,14 @@ public class GameManager : MonoBehaviour
 
     public void IniciarNivel(int nivel)
     {
-        if (nivel > totalNiveles || !EstaDesbloqueado(nivel)) return;
+        Debug.Log("IniciarNivel " + nivel + " | desbloqueado hasta " + NivelesDesbloqueados);
+        if (nivel > totalNiveles || !EstaDesbloqueado(nivel))
+        {
+            Debug.LogWarning("Nivel bloqueado o invalido: " + nivel);
+            return;
+        }
         NivelActual = nivel;
+        Debug.Log("Cargando Nivel " + nivel);
         SceneManager.LoadScene("Nivel " + nivel);
     }
 
