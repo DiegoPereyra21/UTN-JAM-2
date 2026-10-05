@@ -25,6 +25,7 @@ public class SpawnerZombies : MonoBehaviour
     {
         //se suscribe al reloj, cada beat llama a AlBeat
         RelojMusica.Instance.OnBeat += AlBeat;
+        currentLevel = GameManager.Instance.NivelActual;
     }
 
     void OnDestroy()
