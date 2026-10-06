@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 019775f787b8dac4b8de8a8edcfc7410, type: 3}
+  m_Name: Choripan
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueCharacter
+  characterName: Choripan
+  speakerSide: 1
+  normalPortrait: {fileID: -4191234831481825662, guid: f4e0eaebbb80c6c41a0275e9a52f40e6, type: 3}
+  happyPortrait: {fileID: 1480917699468073914, guid: 5fff052211516934abb63de33b3aaaeb, type: 3}
+  angryPortrait: {fileID: 7586989985871599056, guid: fdeea0f5fd8d13a46bdfffdd6275b64a, type: 3}
+  portraitScale: 1.2

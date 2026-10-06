@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 1075740524}
   - component: {fileID: 1075740526}
   m_Layer: 5
-  m_Name: UIDocument
+  m_Name: HUDManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -60,6 +60,9 @@ public class BuildingHUD : MonoBehaviour
                 "BuildingHUD: No se encontró RoofButton."
             );
         }
+
+        DialogueManager.OnDialogueStarted += HideHUD;
+        DialogueManager.OnDialogueEnded += ShowHUD;
     }
 
     private void OnDisable()
@@ -78,6 +81,9 @@ public class BuildingHUD : MonoBehaviour
         {
             BuildingManager.Instance.OnBuildingChanged -= UpdateRoofButton;
         }
+
+        DialogueManager.OnDialogueStarted -= HideHUD;
+        DialogueManager.OnDialogueEnded -= ShowHUD;
     }
 
     private void OnBuildClicked()
@@ -142,5 +148,17 @@ public class BuildingHUD : MonoBehaviour
             roofBackground.style.backgroundColor =
                 new Color(0.75f, 0.27f, 0.27f);
         }
+    }
+
+    private void HideHUD()
+    {
+        uiDocument.rootVisualElement.style.display =
+            DisplayStyle.None;
+    }
+
+    private void ShowHUD()
+    {
+        uiDocument.rootVisualElement.style.display =
+            DisplayStyle.Flex;
     }
 }

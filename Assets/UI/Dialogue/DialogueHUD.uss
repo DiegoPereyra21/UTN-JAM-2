@@ -1,0 +1,129 @@
+#DialogueHUD {
+    flex-grow: 1;
+}
+
+.dialogue-box {
+    position: absolute;
+
+    left: 17%;
+    right: 7%;
+    bottom: 5%;
+
+    height: 24%;
+
+    flex-direction: row;
+
+    padding-left: 5%;
+    padding-right: 2%;
+    padding-top: 18px;
+    padding-bottom: 18px;
+
+    background-color: rgba(20, 18, 24, 0.95);
+
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-right-width: 4px;
+
+    border-top-color: rgb(74, 64, 73);
+    border-bottom-color: rgb(74, 64, 73);
+    border-left-color: rgb(74, 64, 73);
+    border-right-color: rgb(74, 64, 73);
+}
+
+.dialogue-content {
+    padding-left: 20px;
+
+    flex-grow: 1;
+
+    justify-content: flex-start;
+
+    padding-right: 20px;
+}
+
+.character-name {
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+    color: rgb(238, 194, 107);
+
+    -unity-font-style: bold;
+}
+
+
+.dialogue-text {
+    flex-grow: 1;
+
+    font-size: 24px;
+
+    color: rgb(240, 235, 225);
+
+    white-space: normal;
+}
+
+.portrait-container {
+    position: absolute;
+
+    left: 7%;
+    bottom: 0;
+
+    width: 16%;
+    height: 58%;
+}
+
+.dialogue-portrait {
+    width: 100%;
+    height: 100%;
+
+    background-repeat: no-repeat;
+
+    -unity-background-scale-mode: scale-to-fit;
+
+    transform-origin: center bottom;
+}
+
+.continue-button {
+    width: auto;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    align-self: flex-end;
+
+    margin-left: 15px;
+
+    background-color: rgb(74, 64, 73);
+
+    color: rgb(240, 235, 225);
+
+    font-size: 22px;
+
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+
+    border-top-color: rgb(120, 101, 105);
+    border-bottom-color: rgb(120, 101, 105);
+    border-left-color: rgb(120, 101, 105);
+    border-right-color: rgb(120, 101, 105);
+
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.continue-button:hover {
+    background-color: rgb(104, 88, 91);
+
+    border-top-color: rgb(238, 194, 107);
+    border-bottom-color: rgb(238, 194, 107);
+    border-left-color: rgb(238, 194, 107);
+    border-right-color: rgb(238, 194, 107);
+}
+
+.continue-button:active {
+    background-color: rgb(54, 47, 55);
+}

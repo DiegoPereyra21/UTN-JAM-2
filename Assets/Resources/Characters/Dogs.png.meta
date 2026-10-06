@@ -1,0 +1,386 @@
+fileFormatVersion: 2
+guid: 83103bde7a86b9e47a13c5ec8a8aa24a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4145432120704633238
+    second: Dogs_0
+  - first:
+      213: 1130114670773628472
+    second: Dogs_1
+  - first:
+      213: 8798541991217112047
+    second: Dogs_2
+  - first:
+      213: 5354912402140383639
+    second: Dogs_3
+  - first:
+      213: -5475539604634895331
+    second: Dogs_4
+  - first:
+      213: -7733168649595580695
+    second: Dogs_5
+  - first:
+      213: -7201893474420135813
+    second: Dogs_6
+  - first:
+      213: 4147983536220425839
+    second: Dogs_7
+  - first:
+      213: 2580923584396200023
+    second: Dogs_8
+  - first:
+      213: -3842505087829341795
+    second: Dogs_9
+  - first:
+      213: -5006604881560468788
+    second: Dogs_10
+  - first:
+      213: -3165642829246685058
+    second: Dogs_11
+  - first:
+      213: 7548034493598649257
+    second: Dogs_12
+  - first:
+      213: 4559934906240384948
+    second: Dogs_13
+  - first:
+      213: 8175492810988975
+    second: Dogs_14
+  - first:
+      213: 5363111167245638655
+    second: Dogs_15
+  - first:
+      213: -1388896309615382246
+    second: Dogs_16
+  - first:
+      213: -1842541582256909168
+    second: Dogs_17
+  - first:
+      213: 1237017370632245990
+    second: Dogs_18
+  - first:
+      213: -6862071351933585458
+    second: Dogs_19
+  - first:
+      213: -1203663445569839707
+    second: Dogs_20
+  - first:
+      213: 7393163648022794670
+    second: Dogs_21
+  - first:
+      213: 4677108579371544534
+    second: Dogs_22
+  - first:
+      213: 3075162081410907151
+    second: Dogs_23
+  - first:
+      213: 613037880237477044
+    second: Dogs_24
+  - first:
+      213: 2759483533859798835
+    second: Dogs_25
+  - first:
+      213: -1592372764586636896
+    second: Dogs_26
+  - first:
+      213: -4412709870776892879
+    second: Dogs_27
+  - first:
+      213: -6535692622956315344
+    second: Dogs_28
+  - first:
+      213: -283105344786673595
+    second: Dogs_29
+  - first:
+      213: 1716731085269714232
+    second: Dogs_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dogs_25
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 45
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33fb04757a7ab4620800000000000000
+      internalID: 2759483533859798835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dogs_26
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 0
+        width: 45
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a98ec84861c6e9e0800000000000000
+      internalID: -1592372764586636896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dogs_27
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 0
+        width: 48
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 132cb7780c7e2c2c0800000000000000
+      internalID: -4412709870776892879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dogs_28
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 48
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03d3c8fdf2e8c45a0800000000000000
+      internalID: -6535692622956315344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dogs_29
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 0
+        width: 49
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540d9f95035321cf0800000000000000
+      internalID: -283105344786673595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dogs_30
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 0
+        width: 49
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8354f5093dd03d710800000000000000
+      internalID: 1716731085269714232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: dc4f7998c5401064b8decf7d68f29642
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dogs_0: 4145432120704633238
+      Dogs_1: 1130114670773628472
+      Dogs_10: -5006604881560468788
+      Dogs_11: -3165642829246685058
+      Dogs_12: 7548034493598649257
+      Dogs_13: 4559934906240384948
+      Dogs_14: 8175492810988975
+      Dogs_15: 5363111167245638655
+      Dogs_16: -1388896309615382246
+      Dogs_17: -1842541582256909168
+      Dogs_18: 1237017370632245990
+      Dogs_19: -6862071351933585458
+      Dogs_2: 8798541991217112047
+      Dogs_20: -1203663445569839707
+      Dogs_21: 7393163648022794670
+      Dogs_22: 4677108579371544534
+      Dogs_23: 3075162081410907151
+      Dogs_24: 613037880237477044
+      Dogs_25: 2759483533859798835
+      Dogs_26: -1592372764586636896
+      Dogs_27: -4412709870776892879
+      Dogs_28: -6535692622956315344
+      Dogs_29: -283105344786673595
+      Dogs_3: 5354912402140383639
+      Dogs_30: 1716731085269714232
+      Dogs_4: -5475539604634895331
+      Dogs_5: -7733168649595580695
+      Dogs_6: -7201893474420135813
+      Dogs_7: 4147983536220425839
+      Dogs_8: 2580923584396200023
+      Dogs_9: -3842505087829341795
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
