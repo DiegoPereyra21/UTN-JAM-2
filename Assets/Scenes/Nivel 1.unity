@@ -917,6 +917,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1461305752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4535685804359891122, guid: 72260da5b65f62f4bb7c58aaec2adf06, type: 3}
+  m_PrefabInstance: {fileID: 1445352475811167780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1461305755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461305752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a136f6b98e0ba498902dbd025f436c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsoBeat
+  intensidad: 0.005
+  velocidadVuelta: 10
+  cadaBeats: 1
 --- !u!1 &1542974983
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +968,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 43dcb15b3b3c4d34c9ab022bde65883b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1048,7 +1068,9 @@ MonoBehaviour:
   jugador: {fileID: 1937807593}
   bpm: 106
   offset: 0
+  esperarAnimacion: 1
   cuentaInicial: 3.2
+  fadeIn: 1.5
   metronomo: 1
   click: {fileID: 8300000, guid: ea84fa3e468b283438def279465d271d, type: 3}
 --- !u!4 &1542974986
@@ -1141,6 +1163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598911205}
   - component: {fileID: 1598911204}
+  - component: {fileID: 1598911206}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1222,6 +1245,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1598911206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598911203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a136f6b98e0ba498902dbd025f436c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsoBeat
+  intensidad: 0.005
+  velocidadVuelta: 10
+  cadaBeats: 1
 --- !u!1 &1929044202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,6 +1355,18 @@ PrefabInstance:
       propertyPath: golpeMedio
       value: 
       objectReference: {fileID: 1032881615671487611}
+    - target: {fileID: 5325113963979491421, guid: 7e0954280255a02468ce923db4c087a5, type: 3}
+      propertyPath: sonidoAlto
+      value: 
+      objectReference: {fileID: 8300000, guid: 9efa48b9a7ee2b14bb2961c9b7a3e153, type: 3}
+    - target: {fileID: 5325113963979491421, guid: 7e0954280255a02468ce923db4c087a5, type: 3}
+      propertyPath: sonidoBajo
+      value: 
+      objectReference: {fileID: 8300000, guid: 9efa48b9a7ee2b14bb2961c9b7a3e153, type: 3}
+    - target: {fileID: 5325113963979491421, guid: 7e0954280255a02468ce923db4c087a5, type: 3}
+      propertyPath: sonidoMedio
+      value: 
+      objectReference: {fileID: 8300000, guid: 9efa48b9a7ee2b14bb2961c9b7a3e153, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1455,7 +1505,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4535685804359891122, guid: 72260da5b65f62f4bb7c58aaec2adf06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1461305755}
   m_SourcePrefab: {fileID: 100100000, guid: 72260da5b65f62f4bb7c58aaec2adf06, type: 3}
 --- !u!1 &3763248211807266479
 GameObject:

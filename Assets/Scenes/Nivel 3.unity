@@ -439,8 +439,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4535685804359891122, guid: 72260da5b65f62f4bb7c58aaec2adf06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 520987931}
   m_SourcePrefab: {fileID: 100100000, guid: 72260da5b65f62f4bb7c58aaec2adf06, type: 3}
+--- !u!1 &520987930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4535685804359891122, guid: 72260da5b65f62f4bb7c58aaec2adf06, type: 3}
+  m_PrefabInstance: {fileID: 520987929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &520987931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520987930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a136f6b98e0ba498902dbd025f436c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsoBeat
+  intensidad: 0.005
+  velocidadVuelta: 10
+  cadaBeats: 1
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327991498}
   - component: {fileID: 1327991497}
+  - component: {fileID: 1327991499}
   m_Layer: 0
   m_Name: Backgroundd
   m_TagString: Untagged
@@ -784,6 +808,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1327991499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327991496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a136f6b98e0ba498902dbd025f436c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsoBeat
+  intensidad: 0.005
+  velocidadVuelta: 10
+  cadaBeats: 1
 --- !u!1 &1331817839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,7 +1069,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 28fbd183a98961f458cc69b61fd5cfa9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.743
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1130,7 +1169,9 @@ MonoBehaviour:
   jugador: {fileID: 1937807593}
   bpm: 126
   offset: 0
+  esperarAnimacion: 1
   cuentaInicial: 3.22
+  fadeIn: 1.5
   metronomo: 1
   click: {fileID: 8300000, guid: ea84fa3e468b283438def279465d271d, type: 3}
 --- !u!4 &1542974986
