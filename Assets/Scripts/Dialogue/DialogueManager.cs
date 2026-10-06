@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+
+        dialogueUI.Hide();
     }
 
     private void Update()

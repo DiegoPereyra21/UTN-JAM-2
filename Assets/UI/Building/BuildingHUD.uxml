@@ -9,9 +9,13 @@
         <ui:Button text="Nivel 3" name="Level3Button" parse-escape-sequences="false" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
         <ui:Button text="Cerrar mapa" name="LevelsCloseButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px; margin-top: 77px;"/>
     </ui:VisualElement>
-    <ui:Button text="" name="RoofButton" style="top: 10px; right: 6px; height: 80px; width: 74px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.369); background-color: rgba(118, 118, 118, 0.92);">
+    <ui:VisualElement name="BuildRequirements" style="flex-grow: 1; top: 10px; right: 9px;">
+        <ui:Label text="Proxima construccion:" name="RequirementsTitle" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+        <ui:VisualElement name="RequirementsContainer" style="flex-grow: 1;"/>
+    </ui:VisualElement>
+    <ui:Button text="" name="RoofButton" style="top: 9px; right: 431px; height: 54px; width: 51px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.369); background-color: rgba(118, 118, 118, 0.92); background-size: 80% 80%; -unity-background-scale-mode: stretch-to-fill;">
         <ui:VisualElement name="Background" style="flex-grow: 1;"/>
-        <ui:Image style="background-image: resource(&quot;#1 - Transparent Icons_18&quot;); height: 64px; width: 66px; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); margin-bottom: 6px;"/>
+        <ui:Image style="background-image: resource(&quot;#1 - Transparent Icons_18&quot;); height: 45px; width: 45px; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); margin-bottom: 6px;"/>
     </ui:Button>
     <ui:VisualElement name="ButtonsContainer" style="flex-grow: 1; bottom: 42px; right: 108px;">
         <ui:Button text="" name="BuildButton">
