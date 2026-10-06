@@ -28,6 +28,8 @@ public class Player2D : MonoBehaviour
     [SerializeField] private AudioClip sonidoBajo;
     [SerializeField] private AudioClip sonidoMedio;
     [SerializeField] private AudioClip sonidoAlto;
+    //sonido del golpe al aire
+    [SerializeField] private AudioClip sonidoSlash;
 
     //animaciones
     private Animator animator;
@@ -174,8 +176,18 @@ public class Player2D : MonoBehaviour
             }
         }
 
-        //suena solo si le pego a algo
-        if (huboGolpe && fuenteSonido != null && sonido != null) fuenteSonido.PlayOneShot(sonido);
+        //si le pego suena el sonido de su altura, si no pego suena el slash (no suena si esta sujetando un zombi)
+        if (fuenteSonido != null)
+        {
+            if (huboGolpe)
+            {
+                if (sonido != null) fuenteSonido.PlayOneShot(sonido);
+            }
+            else if (zombieSujeto == null && sonidoSlash != null)
+            {
+                fuenteSonido.PlayOneShot(sonidoSlash);
+            }
+        }
     }
 
     IEnumerator Saltar()
