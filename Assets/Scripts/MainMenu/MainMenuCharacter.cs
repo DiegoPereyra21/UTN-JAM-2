@@ -27,7 +27,8 @@ public class MainMenuCharacter : MonoBehaviour
     public void StartWalking()
     {
         isWalking = true;
-        animator.SetTrigger("StartWalking");
+        //pasa directo a la animacion de caminar, sin esperar la transicion del animator
+        animator.CrossFadeInFixedTime("walk", 0.05f);//pa q se sienta mas fluido
 
         WalkingStarted?.Invoke();
     }

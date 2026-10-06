@@ -49279,7 +49279,7 @@ MonoBehaviour:
     costs:
     - item: {fileID: 11400000, guid: 6ee565bc2f31676459c5becc5ebe5f62, type: 2}
       amount: 5
-    - item: {fileID: 11400000, guid: 445d038515eadfc4db313d0746bb99b1, type: 2}
+    - item: {fileID: 11400000, guid: 207e0b2017c8bed4aa55c3f2578526da, type: 2}
       amount: 5
     isBuilt: 0
   - id: wall_02
@@ -49289,7 +49289,7 @@ MonoBehaviour:
     costs:
     - item: {fileID: 11400000, guid: 6ee565bc2f31676459c5becc5ebe5f62, type: 2}
       amount: 5
-    - item: {fileID: 11400000, guid: 445d038515eadfc4db313d0746bb99b1, type: 2}
+    - item: {fileID: 11400000, guid: 207e0b2017c8bed4aa55c3f2578526da, type: 2}
       amount: 5
     isBuilt: 0
   - id: wall_03
