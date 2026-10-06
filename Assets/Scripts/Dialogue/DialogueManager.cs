@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -25,6 +26,16 @@ public class DialogueManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        //si no hay dialogo en curso no hace nada
+        if (currentDialogue == null) return;
+
+        //E pasa a la siguiente linea, igual que el boton
+        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+            NextLine();
+    }
+
     public void StartDialogue(DialogueData dialogue)
     {
         currentDialogue = dialogue;
@@ -46,6 +57,9 @@ public class DialogueManager : MonoBehaviour
 
     public void NextLine()
     {
+        //por si se llama sin dialogo activo
+        if (currentDialogue == null) return;
+
         currentLineIndex++;
 
         if (currentLineIndex >= currentDialogue.lines.Count)
