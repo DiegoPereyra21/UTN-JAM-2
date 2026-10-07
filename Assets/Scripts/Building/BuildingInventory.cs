@@ -86,7 +86,7 @@ public class BuildingInventory : MonoBehaviour
         OnInventoryChanged?.Invoke();
     }
 
-    // test
+    // test (mantener)
     [ContextMenu("Load Test Inventory")]
     private void LoadTestInventory()
     {

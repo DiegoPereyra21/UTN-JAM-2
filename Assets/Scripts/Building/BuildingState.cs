@@ -5,10 +5,10 @@ public class BuildingState : MonoBehaviour
 {
     public static BuildingState Instance { get; private set; }
 
-    private Dictionary<string, bool> builtParts =
-        new Dictionary<string, bool>();
+    private Dictionary<string, bool> builtParts = new Dictionary<string, bool>();
 
     private bool roofVisible = true;
+    private bool buildingStarted;
 
     private void Awake()
     {
@@ -49,5 +49,15 @@ public class BuildingState : MonoBehaviour
     public void SetRoofVisible(bool visible)
     {
         roofVisible = visible;
+    }
+
+    public bool HasBuildingStarted()
+    {
+        return buildingStarted;
+    }
+
+    public void SetBuildingStarted(bool value)
+    {
+        buildingStarted = value;
     }
 }

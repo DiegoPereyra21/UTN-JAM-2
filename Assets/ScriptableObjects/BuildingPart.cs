@@ -13,6 +13,9 @@ public class BuildingPart
     [Header("Final")]
     public GameObject finalObject;
 
+    [Header("Dialogo post construccion")]
+    public DialogueData dialogueAfterBuild;
+
     [Header("Special")]
     public bool isRoof;
 
@@ -21,4 +24,5 @@ public class BuildingPart
 
     [HideInInspector]
     public bool isBuilt;
+
 }

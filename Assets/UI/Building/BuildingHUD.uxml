@@ -4,13 +4,13 @@
         <ui:Label text="Usa los materiales recolectados para construir la base &#10;y proteger a Choripan!" name="Label" emoji-fallback-support="true" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px; color: rgb(255, 255, 255); height: 74px; width: 1114px; padding-left: 8px;"/>
     </ui:VisualElement>
     <ui:VisualElement name="LevelsPanel" style="flex-grow: 1; position: absolute; height: 457px; width: 397px; top: 618px; left: 1671px;">
-        <ui:Button text="Nivel 1" name="Level1Button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
-        <ui:Button text="Nivel 2" name="Level2Button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
-        <ui:Button text="Nivel 3" name="Level3Button" parse-escape-sequences="false" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px;"/>
-        <ui:Button text="Cerrar mapa" name="LevelsCloseButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 20px; margin-top: 77px;"/>
+        <ui:Button text="Nivel 1" name="Level1Button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px;"/>
+        <ui:Button text="Nivel 2" name="Level2Button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px;"/>
+        <ui:Button text="Nivel 3" name="Level3Button" parse-escape-sequences="false" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px;"/>
+        <ui:Button text="Cerrar mapa" name="LevelsCloseButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 25px; margin-top: 77px;"/>
     </ui:VisualElement>
     <ui:VisualElement name="BuildRequirements" style="flex-grow: 1; top: 10px; right: 9px;">
-        <ui:Label text="Proxima construccion:" name="RequirementsTitle" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+        <ui:Label text="Materiales necesarios:" name="RequirementsTitle" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); font-size: 23px;"/>
         <ui:VisualElement name="RequirementsContainer" style="flex-grow: 1;"/>
     </ui:VisualElement>
     <ui:Button text="" name="RoofButton" style="top: 9px; right: 431px; height: 54px; width: 51px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.369); background-color: rgba(118, 118, 118, 0.92); background-size: 80% 80%; -unity-background-scale-mode: stretch-to-fill;">
@@ -21,14 +21,15 @@
         <ui:Button text="" name="BuildButton">
             <ui:Image name="Icon" style="background-image: resource(&quot;#1 - Transparent Icons_150&quot;); width: 70px;"/>
         </ui:Button>
-        <ui:Button text="" name="InventoryButton" style="display: none;">
-            <ui:Image name="Icon" style="background-image: resource(&quot;#1 - Transparent Icons_129&quot;); width: 70px;"/>
-        </ui:Button>
         <ui:Button text="" name="MapButton">
             <ui:Image name="Icon" style="background-image: resource(&quot;#1 - Transparent Icons_214&quot;); width: 70px;"/>
+        </ui:Button>
+        <ui:Button text="" name="InventoryButton" style="display: none;">
+            <ui:Image name="Icon" style="background-image: resource(&quot;#1 - Transparent Icons_129&quot;); width: 70px;"/>
         </ui:Button>
         <ui:Button text="" name="ExitButton" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/redfont.ttf?fileID=12800000&amp;guid=129863aae11e38d48b56d4bf64d46ab1&amp;type=3#redfont&quot;); font-size: 30px; display: none;">
             <ui:Label text="X" style="right: 0; font-size: 60px; color: rgb(255, 23, 0); -unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;); padding-left: 7px; padding-top: 13px; width: 80%; height: 80%;"/>
         </ui:Button>
     </ui:VisualElement>
+    <ui:VisualElement name="TutorialIndicator" picking-mode="Ignore" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/VFX/11_90.png?fileID=2800000&amp;guid=4dc035df9e8af1f47aca6e2825ff0f98&amp;type=3#11_90&quot;); width: 300px; height: 300px; max-height: 300px; -unity-background-image-tint-color: rgb(219, 194, 133);"/>
 </ui:UXML>

@@ -4,14 +4,23 @@ using UnityEngine;
 public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instance { get; private set; }
+    public event System.Action OnBuildingChanged;
 
     [Header("Building Order")]
-    [SerializeField]
-    private List<BuildingPart> buildingParts = new List<BuildingPart>();
+    [SerializeField] private List<BuildingPart> buildingParts = new List<BuildingPart>();
 
-    private int currentBuildIndex = 0;
+    [Header("Dialogues")]
+    [SerializeField] private DialogueData introDialogue;
+    [SerializeField] private DialogueData finalDialogue;
+    [SerializeField] private DialogueData emptyDialogue;
+    [SerializeField] private DialogueData tutorialDialogue;
+    [SerializeField] private DialogueData insufficientMaterialsDialogue;
 
-    public event System.Action OnBuildingChanged;
+    private int currentBuildIndex = -1;
+    private bool waitingForDialogue;
+    private bool dialogueUnlocksNextPart;
+    private DialogueManager dialogueManager;
+
 
     private void Awake()
     {
@@ -24,17 +33,37 @@ public class BuildingManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        DialogueManager.OnDialogueEnded += OnDialogueEnded;
+    }
+
+    private void OnDisable()
+    {
+        DialogueManager.OnDialogueEnded -= OnDialogueEnded;
+    }
+
     private void Start()
     {
+        dialogueManager = DialogueManager.Instance;
+
+        if (dialogueManager == null)
+        {
+            Debug.LogError("BuildingManager: No existe DialogueManager.");
+        }
+
         InitializeBuilding();
     }
 
     private void InitializeBuilding()
     {
-        currentBuildIndex = 0;
+        currentBuildIndex = -1;
 
-        foreach (BuildingPart part in buildingParts)
+        // restauramos visualmente todas las partes
+        for (int i = 0; i < buildingParts.Count; i++)
         {
+            BuildingPart part = buildingParts[i];
+
             if (part == null)
                 continue;
 
@@ -47,134 +76,196 @@ public class BuildingManager : MonoBehaviour
 
             part.isBuilt = isBuilt;
 
-            if (part.previewObject != null)
-                part.previewObject.SetActive(!isBuilt);
-
+            // se muestra la version final de la parte
             if (part.finalObject != null)
-                part.finalObject.SetActive(isBuilt);
-
-            if (!isBuilt && currentBuildIndex == 0)
             {
-                currentBuildIndex =
-                    buildingParts.IndexOf(part);
+                part.finalObject.SetActive(isBuilt);
             }
-        }
 
-        // si todas las paredes estan construidas
-        if (currentBuildIndex == 0 &&
-            buildingParts.Count > 0 &&
-            buildingParts.TrueForAll(part =>
-                part == null || part.isBuilt))
-        {
-            currentBuildIndex = buildingParts.Count;
+            // no se muestran partes no construidas
+            if (part.previewObject != null)
+            {
+                part.previewObject.SetActive(false);
+            }
         }
 
         RestoreRoofVisibility();
+
+        if (BuildingState.Instance == null)
+        {
+            Debug.LogError("BuildingManager: No existe BuildingState.");
+
+            return;
+        }
+
+        // la primera vez que empieza la construcción.
+        if (!BuildingState.Instance.HasBuildingStarted())
+        {
+            StartIntroDialogue();
+            return;
+        }
+
+        // ya hay construccion empezada, buscamos la primera parte no construida
+        UnlockNextPart();
+
         OnBuildingChanged?.Invoke();
     }
 
-    public void TryBuildNext()
+    private void StartIntroDialogue()
     {
-        if (buildingParts.Count == 0)
+        waitingForDialogue = true;
+        dialogueUnlocksNextPart = true;
+
+        DialogueData dialogue = GetDialogueOrFallback(introDialogue);
+
+        if (dialogue == null)
         {
-            Debug.LogWarning(
-                "BuildingManager: No hay partes de construcción configuradas."
-            );
+            Debug.LogWarning("BuildingManager: No hay diálogo inicial válido. " + "Se continuará directamente.");
+
+            waitingForDialogue = false;
+            dialogueUnlocksNextPart = false;
+
+            BuildingState.Instance.SetBuildingStarted(true);
+
+            UnlockNextPart();
+
+            OnBuildingChanged?.Invoke();
 
             return;
         }
 
-        if (currentBuildIndex >= buildingParts.Count)
+        if (dialogueManager == null)
         {
-            Debug.Log(
-                "BuildingManager: La construcción ya está completa."
-            );
+            waitingForDialogue = false;
+            dialogueUnlocksNextPart = false;
+
+            BuildingState.Instance.SetBuildingStarted(true);
+
+            UnlockNextPart();
+
+            OnBuildingChanged?.Invoke();
 
             return;
         }
 
-        BuildingPart part = buildingParts[currentBuildIndex];
-
-        if (part == null)
-        {
-            Debug.LogWarning(
-                $"BuildingManager: La parte {currentBuildIndex} es NULL."
-            );
-
-            return;
-        }
-
-        if (part.isBuilt)
-        {
-            MoveToNextUnbuiltPart();
-            return;
-        }
-
-        if (!HasEnoughMaterials(part))
-        {
-            Debug.Log(
-                $"No hay suficientes materiales para construir {part.id}. " +
-                "Debe completarse esta parte antes de continuar."
-            );
-
-            return;
-        }
-
-        BuildPart(part);
+        dialogueManager.StartDialogue(dialogue);
     }
 
-    private void BuildPart(BuildingPart part)
+    private void StartBuildDialogue(BuildingPart part)
     {
-        foreach (BuildingCost cost in part.costs)
+        waitingForDialogue = true;
+        dialogueUnlocksNextPart = true;
+
+        DialogueData dialogue = GetDialogueOrFallback(part.dialogueAfterBuild);
+
+        if (dialogue == null)
         {
-            BuildingInventory.Instance.RemoveItem(
-                cost.item,
-                cost.amount
-            );
+            Debug.LogWarning($"BuildingManager: {part.id} no tiene diálogo válido. " + "Se continuará directamente.");
+
+            waitingForDialogue = false;
+            dialogueUnlocksNextPart = false;
+
+            UnlockNextPart();
+
+            OnBuildingChanged?.Invoke();
+
+            return;
         }
 
-        if (part.previewObject != null)
-            part.previewObject.SetActive(false);
-
-        if (part.finalObject != null)
-            part.finalObject.SetActive(true);
-
-        part.isBuilt = true;
-
-        if (BuildingState.Instance != null)
+        if (dialogueManager == null)
         {
-            BuildingState.Instance.SetBuilt(
-                part.id,
-                true
-            );
+            waitingForDialogue = false;
+            dialogueUnlocksNextPart = false;
+
+            UnlockNextPart();
+
+            OnBuildingChanged?.Invoke();
+
+            return;
         }
 
-        Debug.Log($"CONSTRUIDO: {part.id}");
+        dialogueManager.StartDialogue(dialogue);
+    }
 
-        MoveToNextUnbuiltPart();
+    private void StartFinalDialogue()
+    {
+        waitingForDialogue = true;
+        dialogueUnlocksNextPart = false;
+
+        DialogueData dialogue = GetDialogueOrFallback(finalDialogue);
+
+        if (dialogue == null)
+        {
+            waitingForDialogue = false;
+
+            OnBuildingChanged?.Invoke();
+
+            return;
+        }
+
+        if (dialogueManager == null)
+        {
+            waitingForDialogue = false;
+
+            OnBuildingChanged?.Invoke();
+
+            return;
+        }
+
+        dialogueManager.StartDialogue(dialogue);
+    }
+
+    private void OnDialogueEnded()
+    {
+        if (!waitingForDialogue)
+            return;
+
+        waitingForDialogue = false;
+
+        if (!dialogueUnlocksNextPart)
+        {
+            OnBuildingChanged?.Invoke();
+
+            return;
+        }
+
+        dialogueUnlocksNextPart = false;
+
+        // primer dialogo
+        if (BuildingState.Instance != null && !BuildingState.Instance.HasBuildingStarted())
+        {
+            BuildingState.Instance.SetBuildingStarted(true);
+
+            GiveStartingMaterials();
+
+            StartTutorialDialogue();
+
+            return;
+        }
+
+        UnlockNextPart();
 
         OnBuildingChanged?.Invoke();
-
-        if (currentBuildIndex >= buildingParts.Count)
-        {
-            Debug.Log("CONSTRUCCION COMPLETADA.");
-        }
-        else
-        {
-            BuildingPart nextPart =
-                buildingParts[currentBuildIndex];
-
-            if (nextPart != null)
-            {
-                Debug.Log(
-                    $"Siguiente construccion: {nextPart.id}"
-                );
-            }
-        }
     }
 
-    private void MoveToNextUnbuiltPart()
+    private DialogueData GetDialogueOrFallback(DialogueData dialogue)
     {
+        if (dialogue != null)
+            return dialogue;
+
+        if (emptyDialogue != null)
+        {
+            return emptyDialogue;
+        }
+
+        return null;
+    }
+
+    // desbloqueo de partes
+    private void UnlockNextPart()
+    {
+        currentBuildIndex = -1;
+
         for (int i = 0; i < buildingParts.Count; i++)
         {
             BuildingPart part = buildingParts[i];
@@ -185,43 +276,139 @@ public class BuildingManager : MonoBehaviour
             if (!part.isBuilt)
             {
                 currentBuildIndex = i;
-                return;
+                break;
             }
         }
 
-        currentBuildIndex = buildingParts.Count;
+        // ocultamos todos los previews
+        for (int i = 0; i < buildingParts.Count; i++)
+        {
+            BuildingPart part = buildingParts[i];
+
+            if (part == null)
+                continue;
+
+            if (part.previewObject != null)
+            {
+                part.previewObject.SetActive(false);
+            }
+        }
+
+        // si no queda ninguna parte lanza el dialogo final
+        if (currentBuildIndex == -1)
+        {
+            StartFinalDialogue();
+            return;
+        }
+
+        // solamente la construcción actual queda desbloqueada
+        BuildingPart currentPart = buildingParts[currentBuildIndex];
+
+        if (currentPart.previewObject != null)
+        {
+            currentPart.previewObject.SetActive(true);
+        }
+
+        Debug.Log($"Construcción desbloqueada: {currentPart.id}");
     }
 
-    public bool CanBuildNext()
+    public void TryBuildNext()
     {
-        if (currentBuildIndex >= buildingParts.Count)
-            return false;
+        if (waitingForDialogue)
+        {
+            Debug.Log("BuildingManager: No se puede construir durante un diálogo.");
 
-        BuildingPart part =
-            buildingParts[currentBuildIndex];
+            return;
+        }
+
+        if (currentBuildIndex < 0 || currentBuildIndex >= buildingParts.Count)
+        {
+            Debug.Log("BuildingManager: No hay ninguna construcción disponible.");
+
+            return;
+        }
+
+        BuildingPart part = buildingParts[currentBuildIndex];
 
         if (part == null)
-            return false;
+        {
+            Debug.LogWarning($"BuildingManager: La parte " + $"{currentBuildIndex} es NULL.");
 
-        return HasEnoughMaterials(part);
+            return;
+        }
+
+        if (part.isBuilt)
+        {
+            Debug.LogWarning($"BuildingManager: {part.id} ya está construida.");
+
+            return;
+        }
+
+        if (!HasEnoughMaterials(part))
+        {
+            Debug.Log($"No hay suficientes materiales para construir {part.id}.");
+
+            StartInsufficientMaterialsDialogue();
+
+            return;
+        }
+
+        if (BuildingTransition.Instance == null)
+        {
+            Debug.LogError("BuildingManager: No existe BuildingTransition.");
+
+            return;
+        }
+
+        BuildingTransition.Instance.PlayTransition(() => BuildPart(part));
     }
 
-    private bool HasEnoughMaterials(BuildingPart part)
+    private void BuildPart(BuildingPart part)
+    {
+        // se consumen los materiales mientras la pantalla está negra
+        foreach (BuildingCost cost in part.costs)
+        {
+            BuildingInventory.Instance.RemoveItem(cost.item, cost.amount);
+        }
+
+        // cambiamos preview por objeto final
+        if (part.previewObject != null)
+        {
+            part.previewObject.SetActive(false);
+        }
+
+        if (part.finalObject != null)
+        {
+            part.finalObject.SetActive(true);
+        }
+
+        part.isBuilt = true;
+
+        // guardamos el progreso
+        if (BuildingState.Instance != null)
+        {
+            BuildingState.Instance.SetBuilt(part.id, true);
+        }
+
+        OnBuildingChanged?.Invoke();
+
+        StartBuildDialogue(part);
+    }
+
+    private bool HasEnoughMaterials(
+        BuildingPart part)
     {
         if (BuildingInventory.Instance == null)
         {
             Debug.LogError(
-                "BuildingManager: No existe BuildingInventory."
-            );
+                "BuildingManager: No existe BuildingInventory.");
 
             return false;
         }
 
         if (part.costs == null || part.costs.Count == 0)
         {
-            Debug.LogWarning(
-                $"BuildingManager: {part.id} no tiene costos configurados."
-            );
+            Debug.LogWarning($"BuildingManager: {part.id} " + "no tiene costos configurados.");
 
             return false;
         }
@@ -230,31 +417,21 @@ public class BuildingManager : MonoBehaviour
         {
             if (cost == null || cost.item == null)
             {
-                Debug.LogWarning(
-                    $"BuildingManager: {part.id} tiene un costo invalido."
-                );
+                Debug.LogWarning($"BuildingManager: {part.id} " + "tiene un costo inválido.");
 
                 return false;
             }
 
             if (cost.amount <= 0)
             {
-                Debug.LogWarning(
-                    $"BuildingManager: {part.id} tiene un costo invalido."
-                );
+                Debug.LogWarning($"BuildingManager: {part.id} " + "tiene un costo inválido.");
 
                 return false;
             }
 
-            if (!BuildingInventory.Instance.HasItem(
-                    cost.item,
-                    cost.amount))
+            if (!BuildingInventory.Instance.HasItem(cost.item, cost.amount))
             {
-                Debug.Log(
-                    $"{part.id}: falta {cost.item.itemName}. " +
-                    $"Necesita {cost.amount}, tiene " +
-                    $"{BuildingInventory.Instance.GetItemCount(cost.item)}."
-                );
+                Debug.Log($"{part.id}: falta {cost.item.itemName}. " + $"Necesita {cost.amount}, tiene " + $"{BuildingInventory.Instance.GetItemCount(cost.item)}.");
 
                 return false;
             }
@@ -265,8 +442,10 @@ public class BuildingManager : MonoBehaviour
 
     public BuildingPart GetCurrentPart()
     {
-        if (currentBuildIndex >= buildingParts.Count)
+        if (currentBuildIndex < 0 || currentBuildIndex >= buildingParts.Count)
+        {
             return null;
+        }
 
         return buildingParts[currentBuildIndex];
     }
@@ -283,7 +462,21 @@ public class BuildingManager : MonoBehaviour
 
     public bool IsBuildingComplete()
     {
-        return currentBuildIndex >= buildingParts.Count;
+        return currentBuildIndex == -1 && AreAllPartsBuilt();
+    }
+
+    private bool AreAllPartsBuilt()
+    {
+        foreach (BuildingPart part in buildingParts)
+        {
+            if (part == null)
+                continue;
+
+            if (!part.isBuilt)
+                return false;
+        }
+
+        return true;
     }
 
     public bool IsRoofBuilt()
@@ -291,7 +484,9 @@ public class BuildingManager : MonoBehaviour
         foreach (BuildingPart part in buildingParts)
         {
             if (part != null && part.isRoof)
+            {
                 return part.isBuilt;
+            }
         }
 
         return false;
@@ -307,8 +502,7 @@ public class BuildingManager : MonoBehaviour
             if (!part.isBuilt || part.finalObject == null)
                 return;
 
-            bool isCurrentlyVisible =
-                part.finalObject.activeSelf;
+            bool isCurrentlyVisible = part.finalObject.activeSelf;
 
             bool newVisibility = !isCurrentlyVisible;
 
@@ -316,14 +510,10 @@ public class BuildingManager : MonoBehaviour
 
             if (BuildingState.Instance != null)
             {
-                BuildingState.Instance.SetRoofVisible(
-                    newVisibility
-                );
+                BuildingState.Instance.SetRoofVisible(newVisibility);
             }
 
-            Debug.Log(
-                $"Roof {(newVisibility ? "VISIBLE" : "OCULTO")}"
-            );
+            Debug.Log($"Roof {(newVisibility ? "VISIBLE" : "OCULTO")}");
 
             OnBuildingChanged?.Invoke();
 
@@ -336,16 +526,19 @@ public class BuildingManager : MonoBehaviour
         if (BuildingState.Instance == null)
             return;
 
-        bool roofVisible =
-            BuildingState.Instance.IsRoofVisible();
+        bool roofVisible = BuildingState.Instance.IsRoofVisible();
 
         foreach (BuildingPart part in buildingParts)
         {
             if (part == null || !part.isRoof)
+            {
                 continue;
+            }
 
             if (!part.isBuilt || part.finalObject == null)
+            {
                 return;
+            }
 
             part.finalObject.SetActive(roofVisible);
 
@@ -358,14 +551,116 @@ public class BuildingManager : MonoBehaviour
         foreach (BuildingPart part in buildingParts)
         {
             if (part == null || !part.isRoof)
+            {
                 continue;
+            }
 
             if (!part.isBuilt || part.finalObject == null)
+            {
                 return false;
+            }
 
             return part.finalObject.activeSelf;
         }
 
         return false;
+    }
+
+    private void StartInsufficientMaterialsDialogue()
+    {
+        DialogueData dialogue = GetDialogueOrFallback(insufficientMaterialsDialogue);
+
+        if (dialogue == null)
+        {
+            Debug.LogWarning("BuildingManager: No hay diálogo de materiales insuficientes.");
+
+            return;
+        }
+
+        if (dialogueManager == null)
+            return;
+
+        dialogueManager.StartDialogue(dialogue);
+    }
+
+    // le damos materiales iniciales al jugador
+    private void GiveStartingMaterials()
+    {
+        if (BuildingInventory.Instance == null)
+        {
+            Debug.LogError("BuildingManager: No existe BuildingInventory.");
+
+            return;
+        }
+
+        if (buildingParts == null || buildingParts.Count == 0)
+        {
+            Debug.LogWarning("BuildingManager: No hay partes de construcción.");
+
+            return;
+        }
+
+        BuildingPart firstPart = buildingParts[0];
+
+        if (firstPart == null)
+        {
+            Debug.LogWarning("BuildingManager: La primera parte de construcción es NULL.");
+
+            return;
+        }
+
+        if (firstPart.costs == null || firstPart.costs.Count == 0)
+        {
+            Debug.LogWarning($"BuildingManager: {firstPart.id} no tiene costos.");
+
+            return;
+        }
+
+        foreach (BuildingCost cost in firstPart.costs)
+        {
+            if (cost == null || cost.item == null)
+                continue;
+
+            if (cost.amount <= 0)
+                continue;
+
+            BuildingInventory.Instance.AddItem(cost.item, cost.amount);
+
+            Debug.Log($"Material inicial entregado: " + $"{cost.amount}x {cost.item.itemName}");
+        }
+    }
+
+    private void StartTutorialDialogue()
+    {
+        waitingForDialogue = true;
+        dialogueUnlocksNextPart = true;
+
+        if (tutorialDialogue == null)
+        {
+            Debug.LogWarning("BuildingManager: No hay diálogo tutorial asignado.");
+
+            waitingForDialogue = false;
+            dialogueUnlocksNextPart = false;
+
+            UnlockNextPart();
+            OnBuildingChanged?.Invoke();
+
+            return;
+        }
+
+        if (dialogueManager == null)
+        {
+            waitingForDialogue = false;
+            dialogueUnlocksNextPart = false;
+
+            UnlockNextPart();
+            OnBuildingChanged?.Invoke();
+
+            return;
+        }
+
+        dialogueManager.StartDialogue(
+            tutorialDialogue, true
+        );
     }
 }

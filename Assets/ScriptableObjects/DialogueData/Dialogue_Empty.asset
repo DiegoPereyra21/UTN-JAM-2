@@ -10,21 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a2a48472b06db34f9555de289daef5d, type: 3}
-  m_Name: StartGame
+  m_Name: Dialogue_Empty
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
   - character: {fileID: 11400000, guid: c45edb083bee1f448ad451a899802e7d, type: 2}
-    text: Ahh me dormi una siesta y ya es el fin del mundo...
-    textSpeed: 2
+    text: ...
+    textSpeed: 0
   - character: {fileID: 11400000, guid: c45edb083bee1f448ad451a899802e7d, type: 2}
-    text: Bueno deberia ir a buscar materiales para hacer un refugio
-    textSpeed: 2
+    text: Uy, me olvide lo que iba a decir...
+    textSpeed: 0
   - character: {fileID: 11400000, guid: c45edb083bee1f448ad451a899802e7d, type: 2}
-    text: No podemos quedarnos en la calle llena de zombies, verdad Chori?
-    textSpeed: 2
-  - character: {fileID: 11400000, guid: 9c8f412ae8be27e459562d9f9f606903, type: 2}
-    text: guau!
-    textSpeed: 2
-  - character: {fileID: 11400000, guid: c45edb083bee1f448ad451a899802e7d, type: 2}
-    text: Eso eso, esperame aca que enseguida vuelvo
-    textSpeed: 2
+    text: Que habra sido?...
+    textSpeed: 0

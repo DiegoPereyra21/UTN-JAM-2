@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Choripan
   m_EditorClassIdentifier: Assembly-CSharp::DialogueCharacter
   characterName: Choripan
+  nameColor: {r: 0.93333334, g: 0.7607843, b: 0.41960785, a: 1}
   speakerSide: 1
   normalPortrait: {fileID: -4191234831481825662, guid: f4e0eaebbb80c6c41a0275e9a52f40e6, type: 3}
   happyPortrait: {fileID: 1480917699468073914, guid: 5fff052211516934abb63de33b3aaaeb, type: 3}
