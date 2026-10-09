@@ -6,6 +6,19 @@ public class ZombiePuntos : MonoBehaviour
     [SerializeField] private Transform player;
     //puntos del camino en orden 
     [SerializeField] private Transform[] puntos;
+
+    //ajuste manual extra por si la cabeza no queda justo en el punto
+    [SerializeField] private Vector2 offsetPunto;
+
+    //cuanto hay que mover al zombi para que su cabeza quede en el punto
+    private Vector3 ajuste;
+
+    //posicion de un punto ya ajustada a este zombi
+    private Vector3 Pos(Transform punto)
+    {
+        return punto.position + ajuste;
+    }
+
     //punto cerca del player donde ataca
     [SerializeField] private Transform puntoAtaque;
     //cada cuantos beats da un paso (1 = en cada beat, 2 = un paso cada 2 beats)
@@ -73,8 +86,14 @@ public class ZombiePuntos : MonoBehaviour
 
     void Start()
     {
-        //empeiza en el primer punto
-        transform.position = puntos[0].position;
+        //calcula la altura de los pies (parte mas baja del sprite) respecto al pivote
+        float base_ = transform.position.y;
+        foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>())
+            base_ = Mathf.Min(base_, sr.bounds.min.y);
+        ajuste = new Vector3(offsetPunto.x, (transform.position.y - base_) + offsetPunto.y, 0f);
+
+        //empieza en el primer punto
+        transform.position = Pos(puntos[0]);
         destino = transform.position;
 
         //se suscribe al reloj, cada beat llama a AlBeat
@@ -145,7 +164,7 @@ public class ZombiePuntos : MonoBehaviour
                 avanzando = true;
             }
 
-            destino = puntos[indice].position;
+            destino = Pos(puntos[indice]);
         }
         else
         {
@@ -159,7 +178,7 @@ public class ZombiePuntos : MonoBehaviour
         atacando = true;
 
         //se transporta al punto cerca del player y golpea al player
-        transform.position = puntoAtaque.position;
+        transform.position = Pos(puntoAtaque);
         destino = transform.position;
         player.GetComponent<Vida>().RecibirGolpe();
 
@@ -176,7 +195,7 @@ public class ZombiePuntos : MonoBehaviour
         }
 
         //vuelve al ultimo punto
-        transform.position = puntos[indice].position;
+        transform.position = Pos(puntos[indice]);
         destino = transform.position;
         atacando = false;
 
@@ -192,7 +211,7 @@ public class ZombiePuntos : MonoBehaviour
             return;
         }
         indice = Mathf.Max(0, indice - retrocesoPorGolpe);
-        destino = puntos[indice].position;
+        destino = Pos(puntos[indice]);
         //reinicia todo y el conteo hasta el proximo paso
         avanzando = true;
         beatsContados = 0;
@@ -230,7 +249,7 @@ public class ZombiePuntos : MonoBehaviour
         Vector3 offset = inicio - transform.position;
         //el final del hold es la cantidad de turnos para matar
         int indiceFinal = Mathf.Max(indice - turnosParaMatar, 0);
-        Vector3 objetivo = puntos[indiceFinal].position + offset;
+        Vector3 objetivo = Pos(puntos[indiceFinal]) + offset;
         //la primera vez queda directo en su lugar despues se desliza a la misma velocidad que el zombi
         if (!lineaIniciada)
         {

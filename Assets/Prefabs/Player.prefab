@@ -187,7 +187,7 @@ MonoBehaviour:
   capaEnemigos:
     serializedVersion: 2
     m_Bits: 64
-  alturaMaxima: 2
+  alturaMaxima: 1.8
   beatsSubida: 0.15
   beatsArriba: 0.5
   gravedadCaida: 12

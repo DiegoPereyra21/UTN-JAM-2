@@ -216,6 +216,8 @@ public class Player2D : MonoBehaviour
                     zombieSujeto = zombie;
                     zombie.Sujetar();
                     huboGolpe = true;
+                    if (efectoImpacto != null)
+                        Instantiate(efectoImpacto, c.ClosestPoint(punto.position), Quaternion.identity);
                 }
                 continue;
             }
