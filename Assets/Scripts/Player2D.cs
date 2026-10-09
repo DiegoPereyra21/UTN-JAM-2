@@ -32,6 +32,7 @@ public class Player2D : MonoBehaviour
     [SerializeField] private AudioClip sonidoSlash;
     //efectos
     [SerializeField] private GameObject efectoCaida;
+    [SerializeField] private GameObject efectoImpacto;
 
     //animaciones
     private Animator animator;
@@ -221,6 +222,10 @@ public class Player2D : MonoBehaviour
 
             //quita vida
             vida.RecibirGolpe();
+            //efecto en el punto del zombie mas cercano a la botella
+            if (efectoImpacto != null)
+                Instantiate(efectoImpacto, c.ClosestPoint(punto.position), Quaternion.identity);
+
             huboGolpe = true;
 
             if (!vida.IsDead())

@@ -197,6 +197,7 @@ MonoBehaviour:
   sonidoAlto: {fileID: 8300000, guid: 9efa48b9a7ee2b14bb2961c9b7a3e153, type: 3}
   sonidoSlash: {fileID: 8300000, guid: 711f59a3daf9406428af573efa9b39d8, type: 3}
   efectoCaida: {fileID: 8038626515348398923, guid: b449a42920dcc714e82cf0439dce8bff, type: 3}
+  efectoImpacto: {fileID: 7759041726858107230, guid: 6f29697904eb6f24fa4485d8c60598e1, type: 3}
   tiempoMuerte: 1.5
   shakeGolpe: 0.05
   duracionShakeGolpe: 0.1
