@@ -30,6 +30,8 @@ public class Player2D : MonoBehaviour
     [SerializeField] private AudioClip sonidoAlto;
     //sonido del golpe al aire
     [SerializeField] private AudioClip sonidoSlash;
+    //efectos
+    [SerializeField] private GameObject efectoCaida;
 
     //animaciones
     private Animator animator;
@@ -274,6 +276,13 @@ public class Player2D : MonoBehaviour
         cayendo = true;
         rb.gravityScale = gravedadCaida;
         yield return new WaitUntil(() => enSuelo);
+        if (efectoCaida != null)
+        {
+            //busca la superficie del suelo para que el polvo no dependa de cuanto se hundio el player
+            Collider2D piso = Physics2D.OverlapCircle(suelo.position, 0.1f, capaSuelo);
+            float y = piso != null ? piso.bounds.max.y : suelo.position.y;
+            Instantiate(efectoCaida, new Vector3(suelo.position.x, y, 0f), Quaternion.identity);
+        }
         //vuelve a normalidad
         cayendo = false;
         rb.gravityScale = gravedadNormal;
