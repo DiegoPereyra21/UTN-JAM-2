@@ -33,6 +33,7 @@ public class Player2D : MonoBehaviour
     //efectos
     [SerializeField] private GameObject efectoCaida;
     [SerializeField] private GameObject efectoImpacto;
+    [SerializeField] private GameObject efectoSangre;
 
     //animaciones
     private Animator animator;
@@ -216,8 +217,7 @@ public class Player2D : MonoBehaviour
                     zombieSujeto = zombie;
                     zombie.Sujetar();
                     huboGolpe = true;
-                    if (efectoImpacto != null)
-                        Instantiate(efectoImpacto, c.ClosestPoint(punto.position), Quaternion.identity);
+                    CrearEfectosGolpe(c, punto.position);
                 }
                 continue;
             }
@@ -225,8 +225,7 @@ public class Player2D : MonoBehaviour
             //quita vida
             vida.RecibirGolpe();
             //efecto en el punto del zombie mas cercano a la botella
-            if (efectoImpacto != null)
-                Instantiate(efectoImpacto, c.ClosestPoint(punto.position), Quaternion.identity);
+            CrearEfectosGolpe(c, punto.position);
 
             huboGolpe = true;
 
@@ -254,6 +253,14 @@ public class Player2D : MonoBehaviour
                 fuenteSonido.PlayOneShot(sonidoSlash);
             }
         }
+    }
+
+    //impacto y sangre en el punto del zombie mas cercano a la botella
+    private void CrearEfectosGolpe(Collider2D zombie, Vector2 desde)
+    {
+        Vector2 donde = zombie.ClosestPoint(desde);
+        if (efectoImpacto != null) Instantiate(efectoImpacto, donde, Quaternion.identity);
+        if (efectoSangre != null) Instantiate(efectoSangre, donde, Quaternion.identity);
     }
 
     IEnumerator Saltar()

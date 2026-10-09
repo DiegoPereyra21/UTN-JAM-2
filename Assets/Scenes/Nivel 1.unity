@@ -1348,6 +1348,10 @@ PrefabInstance:
       propertyPath: golpeMedio
       value: 
       objectReference: {fileID: 1032881615671487611}
+    - target: {fileID: 5325113963979491421, guid: 7e0954280255a02468ce923db4c087a5, type: 3}
+      propertyPath: efectoSangre
+      value: 
+      objectReference: {fileID: 5639014293177155884, guid: 3618c50a155af0c488d693523f6a612f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
