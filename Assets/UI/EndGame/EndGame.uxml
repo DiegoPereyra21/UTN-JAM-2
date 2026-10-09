@@ -1,0 +1,24 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/EndGame/EndGame.uss?fileID=7433441132597879392&amp;guid=1d53826b1a6036d428a8fe9dd48f1ebc&amp;type=3#EndGame"/>
+    <ui:VisualElement name="EndGameScreen" class="end-game-screen" style="flex-grow: 1; display: none;">
+        <ui:VisualElement name="Background" class="end-game-background" style="flex-grow: 1; top: -2px; bottom: 4px; right: 0; left: 0; background-image: url(&quot;project://database/Assets/Art/Backgrounds/fondo%20test%203.png?fileID=3975587587646235743&amp;guid=0badc67820a75d84e8572afe916fad24&amp;type=3#fondo test 3_0&quot;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.255); background-color: rgb(0, 0, 0); flex-wrap: wrap; flex-direction: row; -unity-text-align: lower-left; background-position-y: bottom 0; align-items: stretch; align-self: auto; justify-content: space-between;">
+            <ui:VisualElement name="Filter" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Filters/Overlay/23.png?fileID=2720535173406242035&amp;guid=8ea8b99e840574e4fb5e77e96866cad8&amp;type=3#23_0&quot;); max-width: none; width: auto; height: auto; -unity-background-scale-mode: scale-and-crop; display: flex; align-content: center; align-self: auto; justify-content: center; -unity-background-image-tint-color: rgba(255, 255, 255, 0.306);"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Content" class="end-game-content" style="flex-grow: 1; width: 1135px; justify-content: space-around; align-self: center; align-content: center; flex-wrap: nowrap; align-items: center;">
+            <ui:Label text="¡SALVASTE A LUCHO Y CHORIPAN!" name="Title" binding-path="" class="end-game-title" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+            <ui:Label text="♡ Muchas gracias por jugar Ciruja Beats ♡" name="Description" class="end-game-description" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/VT323-Regular.ttf?fileID=12800000&amp;guid=72cb0ae2e2111e74fa04150b982f227c&amp;type=3#VT323-Regular&quot;); margin-bottom: 100px; padding-top: 108px; font-size: 55px;"/>
+            <ui:VisualElement name="SocialLinks" class="end-game-social-links" style="flex-grow: 1; flex-wrap: wrap;">
+                <ui:Label text="¡Seguinos para proximos juegos y updates!" name="FollowLabel" class="end-game-follow-label" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/VT323-Regular.ttf?fileID=12800000&amp;guid=72cb0ae2e2111e74fa04150b982f227c&amp;type=3#VT323-Regular&quot;); margin-bottom: 80px; margin-top: -55px; padding-top: 8px; padding-bottom: 43px; font-size: 45px;"/>
+                <ui:Button text="Button" name="DeveloperOneButton" class="end-game-social-button" style="align-items: center; right: 20px;">
+                    <ui:VisualElement name="DeveloperOneImage" class="end-game-social-image" style="flex-grow: 1; background-image: resource(&quot;itchio/waifu2 real&quot;);"/>
+                    <ui:Label text="InFuria" name="DeveloperOneName" enable-rich-text="true" class="end-game-social-name" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+                </ui:Button>
+                <ui:Button text="Button" name="DeveloperTwoButton" class="end-game-social-button" style="align-items: center; left: 20px;">
+                    <ui:VisualElement name="DeveloperTwoImage" class="end-game-social-image" style="flex-grow: 1; background-image: resource(&quot;itchio/waifu 1 real&quot;);"/>
+                    <ui:Label text="Diego2K" name="DeveloperTwoName" class="end-game-social-name" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:Button text="VOLVER AL MENU" name="MenuButton" class="end-game-button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

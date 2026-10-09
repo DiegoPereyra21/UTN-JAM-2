@@ -60,4 +60,11 @@ public class BuildingState : MonoBehaviour
     {
         buildingStarted = value;
     }
+
+    public void ResetState()
+    {
+        builtParts.Clear();
+        roofVisible = true;
+        buildingStarted = false;
+    }
 }
