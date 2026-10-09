@@ -160,7 +160,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.09}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
 --- !u!114 &5325113963979491421
@@ -190,13 +190,20 @@ MonoBehaviour:
   alturaMaxima: 2
   beatsSubida: 0.15
   beatsArriba: 0.5
-  gravedadCaida: 20
+  gravedadCaida: 12
   fuenteSonido: {fileID: 7950238504918699665}
   sonidoBajo: {fileID: 8300000, guid: 9efa48b9a7ee2b14bb2961c9b7a3e153, type: 3}
   sonidoMedio: {fileID: 8300000, guid: 9efa48b9a7ee2b14bb2961c9b7a3e153, type: 3}
   sonidoAlto: {fileID: 8300000, guid: 9efa48b9a7ee2b14bb2961c9b7a3e153, type: 3}
   sonidoSlash: {fileID: 8300000, guid: 711f59a3daf9406428af573efa9b39d8, type: 3}
+  efectoCaida: {fileID: 8038626515348398923, guid: b449a42920dcc714e82cf0439dce8bff, type: 3}
   tiempoMuerte: 1.5
+  shakeGolpe: 0.05
+  duracionShakeGolpe: 0.1
+  shakeDanio: 0.25
+  duracionShakeDanio: 0.3
+  colorDanio: {r: 1, g: 0.25, b: 0.25, a: 1}
+  duracionFlashDanio: 0.25
 --- !u!114 &299067785533382267
 MonoBehaviour:
   m_ObjectHideFlags: 0
