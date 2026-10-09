@@ -37,6 +37,17 @@ public class Player2D : MonoBehaviour
     //espera antes de destruirse para que se vea la animacion de muerte, y clavar el tiempo de duracion de dead
     [SerializeField] private float tiempoMuerte = 1.5f;
 
+    //game feel
+    //sacudida de camara al pegarle a algo (intensidad en unidades de unity, duracion en segundos)
+    [SerializeField] private float shakeGolpe = 0.05f;
+    [SerializeField] private float duracionShakeGolpe = 0.1f;
+    //sacudida al recibir daño, mas fuerte
+    [SerializeField] private float shakeDanio = 0.25f;
+    [SerializeField] private float duracionShakeDanio = 0.3f;
+    //flash del sprite al recibir daño
+    [SerializeField] private Color colorDanio = new Color(1f, 0.25f, 0.25f, 1f);
+    [SerializeField] private float duracionFlashDanio = 0.25f;
+
     //privadas
     private Rigidbody2D rb;
     private float gravedadNormal;
@@ -47,6 +58,10 @@ public class Player2D : MonoBehaviour
     //zombi que esta sujetando con el golpe alto
     private ZombiePuntos zombieSujeto;
     private bool cayendo;
+    //para el flash de daño
+    private SpriteRenderer spriteRenderer;
+    private Color colorOriginal;
+    private Coroutine flashDanio;
 
     void Awake()
     {
@@ -57,18 +72,56 @@ public class Player2D : MonoBehaviour
         if (fuenteSonido == null) fuenteSonido = GetComponent<AudioSource>();
         //busca el animator en el player o en su hijo
         animator = GetComponentInChildren<Animator>();
+        //sprite del player para el flash de daño
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer != null) colorOriginal = spriteRenderer.color;
     }
     void Start()
     {
         //cuando la vida llega a 0 avisa y el player muere
         Vida vida = GetComponent<Vida>();
-        if (vida != null) vida.OnDeath += Morir;
+        if (vida != null)
+        {
+            vida.OnDeath += Morir;
+            //cada vez que baja la vida salen los efectos de daño
+            vida.OnHealthChanged += AlRecibirDanio;
+        }
     }
 
     void OnDestroy()
     {
         Vida vida = GetComponent<Vida>();
-        if (vida != null) vida.OnDeath -= Morir;
+        if (vida != null)
+        {
+            vida.OnDeath -= Morir;
+            vida.OnHealthChanged -= AlRecibirDanio;
+        }
+    }
+
+    //efectos al recibir daño: sacudida de camara y flash rojo
+    void AlRecibirDanio(int vidaActual)
+    {
+        //si fue el golpe que mato la sacudida dura el doble
+        if (CameraShake.Instance != null)
+            CameraShake.Instance.Sacudir(shakeDanio, vidaActual <= 0 ? duracionShakeDanio * 2f : duracionShakeDanio);
+
+        //si ya habia un flash lo reinicia
+        if (spriteRenderer == null) return;
+        if (flashDanio != null) StopCoroutine(flashDanio);
+        flashDanio = StartCoroutine(FlashDanio());
+    }
+
+    IEnumerator FlashDanio()
+    {
+        float t = 0f;
+        while (t < duracionFlashDanio)
+        {
+            t += Time.deltaTime;
+            //arranca rojo y vuelve de a poco a su color
+            spriteRenderer.color = Color.Lerp(colorDanio, colorOriginal, t / duracionFlashDanio);
+            yield return null;
+        }
+        spriteRenderer.color = colorOriginal;
     }
 
     //al morir hace la animacion y despues se destruye asi se frena todo
@@ -175,6 +228,10 @@ public class Player2D : MonoBehaviour
                     zombie.Retroceder();
             }
         }
+
+        //sacudida suave de camara al pegarle a algo
+        if (huboGolpe && CameraShake.Instance != null)
+            CameraShake.Instance.Sacudir(shakeGolpe, duracionShakeGolpe);
 
         //si le pego suena el sonido de su altura, si no pego suena el slash (no suena si esta sujetando un zombi)
         if (fuenteSonido != null)
