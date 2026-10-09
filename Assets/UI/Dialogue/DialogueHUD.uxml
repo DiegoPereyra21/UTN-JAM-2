@@ -1,13 +1,13 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Dialogue/DialogueHUD.uss?fileID=7433441132597879392&amp;guid=438b9be1e44b34042812636d42b5a234&amp;type=3#DialogueHUD"/>
-    <ui:VisualElement name="DialogueBox" class="dialogue-box" style="flex-grow: 1;">
+    <ui:VisualElement name="DialogueBox" class="dialogue-box" style="flex-grow: 1; padding-left: 7%;">
         <ui:VisualElement name="DialogueContent" class="dialogue-content" style="flex-grow: 1;">
             <ui:Label text="Label" name="CharacterName" class="character-name" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
-            <ui:Label text="Label" name="DialogueText" class="dialogue-text" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
+            <ui:Label text="" name="DialogueText" enable-rich-text="true" class="dialogue-text" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/VT323-Regular.ttf?fileID=12800000&amp;guid=72cb0ae2e2111e74fa04150b982f227c&amp;type=3#VT323-Regular&quot;); font-size: 40px;"/>
         </ui:VisualElement>
         <ui:Button text="[E - Continuar]" name="ContinueButton" class="continue-button" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/4x3Pixels-Regular.otf?fileID=12800000&amp;guid=b5613df4a3cbb084ca3080409bb3722f&amp;type=3#4x3Pixels-Regular&quot;);"/>
     </ui:VisualElement>
-    <ui:VisualElement name="PortraitContainer" class="portrait-container" style="flex-grow: 1; -unity-text-align: lower-left; justify-content: flex-end; align-content: flex-end; -unity-background-scale-mode: scale-to-fit; background-position-y: bottom 0;">
-        <ui:Image name="Portrait" class="dialogue-portrait" style="justify-content: flex-end; background-image: none; -unity-background-scale-mode: scale-to-fit; background-position-x: center; background-position-y: bottom 0; align-content: flex-end; background-size: contain; margin-top: 0;"/>
+    <ui:VisualElement name="PortraitContainer" class="portrait-container" style="flex-grow: 1; -unity-text-align: lower-left; justify-content: flex-end; align-content: flex-end; -unity-background-scale-mode: scale-to-fit; background-position-y: bottom 0; display: flex;">
+        <ui:Image name="Portrait" class="dialogue-portrait" style="justify-content: flex-end; background-image: none; -unity-background-scale-mode: scale-to-fit; background-position-x: center; background-position-y: bottom 0; align-content: flex-end; background-size: contain; margin-top: 0; display: flex;"/>
     </ui:VisualElement>
 </ui:UXML>

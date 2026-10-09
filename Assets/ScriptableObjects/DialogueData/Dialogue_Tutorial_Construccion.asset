@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2a48472b06db34f9555de289daef5d, type: 3}
+  m_Name: Dialogue_Tutorial_Construccion
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - character: {fileID: 11400000, guid: 9c8f412ae8be27e459562d9f9f606903, type: 2}
+    text: Hola humano que controla mi humano, por si te olvidaste como sobrevivir
+      te explico rapido...
+    indicator: 0
+    textSpeed: 0
+  - character: {fileID: 11400000, guid: 9c8f412ae8be27e459562d9f9f606903, type: 2}
+    text: 'Aca arriba vas a tener una lista de los materiales que necesitas para
+      construir la proxima parte del refugio '
+    indicator: 1
+    textSpeed: 0
+  - character: {fileID: 11400000, guid: 9c8f412ae8be27e459562d9f9f606903, type: 2}
+    text: El ojo sirve para mostrar y ocultar el techo (cuando tengamos uno)
+    indicator: 5
+    textSpeed: 0
+  - character: {fileID: 11400000, guid: 9c8f412ae8be27e459562d9f9f606903, type: 2}
+    text: 'Abajo tenes dos botones: el martillo construye automaticamente la siguiente
+      parte del refugio si tenes materiales suficientes'
+    indicator: 2
+    textSpeed: 0
+  - character: {fileID: 11400000, guid: 9c8f412ae8be27e459562d9f9f606903, type: 2}
+    text: El mapa te abre un menu desplegable para que elijas a que zona queres ir
+      a explorar
+    indicator: 3
+    textSpeed: 0
+  - character: {fileID: 11400000, guid: 9c8f412ae8be27e459562d9f9f606903, type: 2}
+    text: Aunque es peligroso, necesitas explorar para juntar materiales. Una vez
+      los tengas (y si volves vivo), podes ponerte a construir
+    indicator: 0
+    textSpeed: 0
+  - character: {fileID: 11400000, guid: 9c8f412ae8be27e459562d9f9f606903, type: 2}
+    text: Buena suerte y cuida a mi Lucho por mi cuando salgan a explorar!
+    indicator: 0
+    textSpeed: 0

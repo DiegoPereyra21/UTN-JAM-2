@@ -6,8 +6,8 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Start()
     {
-        //temp
-        TriggerDialogue();
+        
+        //TriggerDialogue();
     }
     public void TriggerDialogue()
     {

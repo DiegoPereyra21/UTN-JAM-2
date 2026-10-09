@@ -4,14 +4,20 @@ using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
-
-    [SerializeField] private DialogueUI dialogueUI;
-
     public static event System.Action OnDialogueStarted;
     public static event System.Action OnDialogueEnded;
 
+    public DialogueData CurrentDialogue => currentDialogue;
+    public bool IsTutorialDialogue { get; private set; }
+
+    [Header("UI")]
+    [SerializeField] private DialogueUI dialogueUI;
+
     private DialogueData currentDialogue;
+    
     private int currentLineIndex;
+    private bool isChangingDialogue;
+    private bool transitionToNextDialogue;
 
     private void Awake()
     {
@@ -24,22 +30,69 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+
+        if (dialogueUI == null)
+        {
+            Debug.LogError("DialogueManager: No existe DialogueUI.");
+            return;
+        }
+
+        dialogueUI.Hide();
     }
 
     private void Update()
     {
-        //si no hay dialogo en curso no hace nada
-        if (currentDialogue == null) return;
+        if (currentDialogue == null)
+            return;
 
-        //E pasa a la siguiente linea, igual que el boton
+        if (isChangingDialogue)
+            return;
+
+        if (dialogueUI.IsTransitioning)
+            return;
+
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        {
             NextLine();
+        }
     }
 
-    public void StartDialogue(DialogueData dialogue)
+    public void StartDialogue(DialogueData dialogue, bool isTutorial = false)
+    {
+        if (dialogue == null)
+        {
+            Debug.LogWarning("DialogueManager: Se intentó iniciar un diálogo NULL.");
+
+            return;
+        }
+
+        if (dialogue.lines == null || dialogue.lines.Count == 0)
+        {
+            Debug.LogWarning("DialogueManager: El diálogo no tiene líneas.");
+
+            return;
+        }
+
+        IsTutorialDialogue = isTutorial;
+
+        if (transitionToNextDialogue)
+        {
+            transitionToNextDialogue = false;
+
+            StartCoroutine(TransitionToDialogue(dialogue));
+
+            return;
+        }
+
+        StartDialogueInternal(dialogue);
+    }
+
+    private void StartDialogueInternal(DialogueData dialogue)
     {
         currentDialogue = dialogue;
         currentLineIndex = 0;
+
+        isChangingDialogue = false;
 
         OnDialogueStarted?.Invoke();
 
@@ -48,8 +101,46 @@ public class DialogueManager : MonoBehaviour
         ShowCurrentLine();
     }
 
+    private System.Collections.IEnumerator TransitionToDialogue(DialogueData nextDialogue)
+    {
+        if (isChangingDialogue)
+            yield break;
+
+        isChangingDialogue = true;
+
+        // fade out del dialogo anterior
+        yield return dialogueUI.FadeOut();
+
+        // pequenha pausa
+        yield return dialogueUI.Pause();
+
+        // siguiente dialogo
+        currentDialogue = nextDialogue;
+        currentLineIndex = 0;
+
+        // carga la nueva linea mientras sigue invisible
+        dialogueUI.Show();
+
+        ShowCurrentLine();
+
+        // fade in al nuevo dialogo
+        yield return dialogueUI.FadeIn();
+
+        isChangingDialogue = false;
+
+        OnDialogueStarted?.Invoke();
+    }
+
     private void ShowCurrentLine()
     {
+        if (currentDialogue == null)
+            return;
+
+        if (currentLineIndex < 0 || currentLineIndex >= currentDialogue.lines.Count)
+        {
+            return;
+        }
+
         DialogueLine line = currentDialogue.lines[currentLineIndex];
 
         dialogueUI.ShowLine(line);
@@ -57,27 +148,40 @@ public class DialogueManager : MonoBehaviour
 
     public void NextLine()
     {
-        //por si se llama sin dialogo activo
-        if (currentDialogue == null) return;
+        if (currentDialogue == null)
+            return;
+
+        if (isChangingDialogue)
+            return;
+
+        if (dialogueUI.IsTransitioning)
+            return;
 
         currentLineIndex++;
 
-        if (currentLineIndex >= currentDialogue.lines.Count)
+        if (currentLineIndex < currentDialogue.lines.Count)
         {
-            EndDialogue();
+            ShowCurrentLine();
             return;
         }
 
-        ShowCurrentLine();
+        EndDialogue();
     }
 
     private void EndDialogue()
     {
-        dialogueUI.Hide();
+        if (isChangingDialogue)
+            return;
 
-        OnDialogueEnded?.Invoke();
+        dialogueUI.Hide();
 
         currentDialogue = null;
         currentLineIndex = 0;
+
+        IsTutorialDialogue = false;
+
+        transitionToNextDialogue = true;
+
+        OnDialogueEnded?.Invoke();
     }
 }

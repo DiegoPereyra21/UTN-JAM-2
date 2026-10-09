@@ -5,8 +5,14 @@ using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Personaje del menu")]
     [SerializeField] private MainMenuCharacter menuCharacter;
+
+    [Header("Nombre de escena inicial")]
     [SerializeField] private string nextSceneName;
+
+    [Header("Duracion de caminata del personaje")]
+    [SerializeField] private float walkDuration = 6f;
 
     private Button startButton;
 
@@ -32,6 +38,9 @@ public class MainMenu : MonoBehaviour
     private void OnStartClicked()
     {
         startButton.SetEnabled(false);
+
+        GameManager.Instance.NewRun();
+
         menuCharacter.StartDrink();
     }
 
@@ -42,7 +51,7 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator LoadNextScene()
     {
-        yield return new WaitForSeconds(5.5f);
+        yield return new WaitForSeconds(walkDuration);
 
         SceneManager.LoadScene(nextSceneName);
     }

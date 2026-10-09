@@ -88,8 +88,8 @@
 
 #RoofButton {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     right: 40px;
     top: 40px;
     background-color: rgba(25, 23, 20, 0.92);
@@ -113,8 +113,8 @@
 
 #RoofButton #Image {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     left: 50%;
     top: 50%;
     translate: -50% -50%;
@@ -272,4 +272,107 @@
 
 #LevelsCloseButton:active {
     background-color: rgba(45, 22, 20, 0.98);
+}
+
+#BuildRequirements {
+    position: absolute;
+
+    right: 160px;
+    top: 40px;
+
+    width: 420px;
+    min-height: 150px;
+
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background-color: rgba(25, 23, 20, 0.92);
+
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+
+    border-top-color: rgba(190, 170, 130, 0.75);
+    border-right-color: rgba(190, 170, 130, 0.75);
+    border-bottom-color: rgba(190, 170, 130, 0.75);
+    border-left-color: rgba(190, 170, 130, 0.75);
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    flex-direction: column;
+}
+
+#RequirementsTitle {
+    width: 100%;
+    height: 30px;
+
+    margin-bottom: 12px;
+
+    color: rgb(225, 215, 190);
+
+    font-size: 23px;
+
+    -unity-text-align: middle-left;
+}
+
+#RequirementsContainer {
+    width: 100%;
+
+    flex-direction: column;
+}
+
+.requirement {
+    width: 100%;
+    height: 34px;
+
+    flex-direction: row;
+    align-items: center;
+
+    margin-bottom: 5px;
+}
+
+.requirement-icon {
+    width: 50px;
+    height: 50px;
+
+    margin-right: 8px;
+
+    background-size: 100% 100%;
+}
+
+.requirement-name {
+    flex-grow: 1;
+
+    color: rgb(225, 215, 190);
+
+    font-size: 20px;
+}
+
+.requirement-amount {
+    width: 70px;
+
+    color: rgb(225, 215, 190);
+
+    font-size: 20px;
+
+    -unity-text-align: middle-right;
+}
+
+.requirement-enough {
+    color: rgb(100, 190, 110);
+}
+
+.requirement-missing {
+    color: rgb(210, 100, 90);
+}
+
+#TutorialIndicator {
+    position: absolute;
+    z-index: 9999;
 }

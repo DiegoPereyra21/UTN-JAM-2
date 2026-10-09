@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::DialogueCharacter
   characterName: Lucho
+  nameColor: {r: 0.5294118, g: 0.0627451, b: 0.16470589, a: 1}
   speakerSide: 0
   normalPortrait: {fileID: -1966381394238714707, guid: f9eae8b551a965740acfa6d73cfb75a4, type: 3}
   happyPortrait: {fileID: 0}
   angryPortrait: {fileID: 0}
+  portraitScale: 1

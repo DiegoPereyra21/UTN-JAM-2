@@ -1122,6 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
   menuCharacter: {fileID: 8818233396556161713}
   nextSceneName: Building
+  walkDuration: 6.5
 --- !u!1 &1770672814
 GameObject:
   m_ObjectHideFlags: 0

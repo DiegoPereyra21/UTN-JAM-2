@@ -10,9 +10,8 @@ public enum DialogueSpeakerSide
 public class DialogueCharacter : ScriptableObject
 {
     public string characterName;
-
+    public Color nameColor = Color.white;
     public DialogueSpeakerSide speakerSide;
-
     public Sprite normalPortrait;
     public Sprite happyPortrait;
     public Sprite angryPortrait;

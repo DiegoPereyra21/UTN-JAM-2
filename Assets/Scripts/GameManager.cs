@@ -62,4 +62,17 @@ public class GameManager : MonoBehaviour
         NivelActual = 0;
         SceneManager.LoadScene(escenaBuilding);
     }
+    public void NewRun()
+    {
+        NivelesDesbloqueados = 1;
+        NivelActual = 0;
+
+        if (BuildingState.Instance != null)
+            BuildingState.Instance.ResetState();
+
+        if (BuildingInventory.Instance != null)
+            BuildingInventory.Instance.ClearInventory();
+
+        Debug.Log("Nueva partida: progreso reiniciado.");
+    }
 }
