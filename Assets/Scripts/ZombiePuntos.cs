@@ -172,6 +172,9 @@ public class ZombiePuntos : MonoBehaviour
             //suena en la camara porque el zombi se destruye, sino se cortaria
             if (sonidoHoldCompleto != null && Camera.main != null)
                 AudioSource.PlayClipAtPoint(sonidoHoldCompleto, Camera.main.transform.position);
+            //feedback de dañoy sonido del golpe al completar el hold
+            AlRecibirDanio(0);
+            player.GetComponent<Player2D>().SonarGolpeAlto();
             Die();
         }
     }
@@ -331,13 +334,14 @@ public class ZombiePuntos : MonoBehaviour
         Debug.Log($"[{name}] MUERE. LootTable: {lootTable}");
 
         //anim: reproduce la muerte, ya no se puede golpear y se destruye cuando termina
-        float espera = 0f;
+        //si no tiene animacion espera lo que dura el flash, asi se ve el feedback antes de desaparecer
+        float espera = duracionFlash;
+        foreach (Collider2D c in GetComponentsInChildren<Collider2D>()) c.enabled = false;
+        if (lineaHold != null) lineaHold.enabled = false;
         if (animator != null)
         {
             Reproducir("Die", 0f);
             espera = LargoClip("Die");
-            foreach (Collider2D c in GetComponentsInChildren<Collider2D>()) c.enabled = false;
-            if (lineaHold != null) lineaHold.enabled = false;
         }
 
         //el loot se entrega al momento de morir
@@ -398,7 +402,11 @@ public class ZombiePuntos : MonoBehaviour
             t += Time.deltaTime;
             //arranca rojo y vuelve de a poco a su color
             for (int i = 0; i < sprites.Length; i++)
-                sprites[i].color = Color.Lerp(colorDanio, coloresOriginales[i], t / duracionFlash);
+            {
+                //si el zombi ya es rojo de base, el flash va a blanco para que se note
+                Color flashColor = coloresOriginales[i] == colorDanio ? Color.white : colorDanio;
+                sprites[i].color = Color.Lerp(flashColor, coloresOriginales[i], t / duracionFlash);
+            }
             yield return null;
         }
         for (int i = 0; i < sprites.Length; i++) sprites[i].color = coloresOriginales[i];

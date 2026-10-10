@@ -67,6 +67,12 @@ public class Player2D : MonoBehaviour
     private Color colorOriginal;
     private Coroutine flashDanio;
 
+    //lo llama el zombi de mantener al completar el hold, suena el golpe alto
+    public void SonarGolpeAlto()
+    {
+        if (fuenteSonido != null && sonidoAlto != null) fuenteSonido.PlayOneShot(sonidoAlto);
+    }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

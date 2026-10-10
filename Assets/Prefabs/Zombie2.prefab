@@ -209,9 +209,9 @@ MonoBehaviour:
   puntos: []
   efectoSangreHold: {fileID: 0}
   colorDanio: {r: 1, g: 0, b: 0, a: 1}
-  duracionFlash: 0.2
-  intensidadShake: 0.1
-  duracionShake: 0.1
+  duracionFlash: 0.25
+  intensidadShake: 0.15
+  duracionShake: 0.12
   offsetPunto: {x: 0, y: 0}
   puntoAtaque: {fileID: 0}
   beatsPorPaso: 1
