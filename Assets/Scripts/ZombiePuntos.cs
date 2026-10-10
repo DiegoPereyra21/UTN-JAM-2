@@ -10,6 +10,18 @@ public class ZombiePuntos : MonoBehaviour
     //sangre que sale en cada beat mientras lo sujetan
     [SerializeField] private GameObject efectoSangreHold;
 
+    //recibe daño feedback
+    [SerializeField] private Color colorDanio = Color.red;
+    [SerializeField] private float duracionFlash = 0.2f;
+    [SerializeField] private float intensidadShake = 0.1f;
+    [SerializeField] private float duracionShake = 0.1f;
+
+    private SpriteRenderer[] sprites;
+    private Color[] coloresOriginales;
+    private Vector3 shakeActual;
+    private float finShake;
+    private Coroutine flash;
+
     //ajuste manual extra por si la cabeza no queda justo en el punto
     [SerializeField] private Vector2 offsetPunto;
 
@@ -105,7 +117,14 @@ public class ZombiePuntos : MonoBehaviour
         vida = GetComponent<Vida>();
 
         if (vida != null)
+        {
             vida.OnDeath += Die;
+            vida.OnHealthChanged += AlRecibirDanio;
+        }
+
+        sprites = GetComponentsInChildren<SpriteRenderer>();
+        coloresOriginales = new Color[sprites.Length];
+        for (int i = 0; i < sprites.Length; i++) coloresOriginales[i] = sprites[i].color;
 
         if (lineaHold != null)
         {
@@ -120,12 +139,18 @@ public class ZombiePuntos : MonoBehaviour
         if (RelojMusica.Instance != null) RelojMusica.Instance.OnBeat -= AlBeat;
 
         if (vida != null) vida.OnDeath -= Die;
+
+        if (vida != null) vida.OnHealthChanged -= AlRecibirDanio;
     }
 
     void Update()
     {
         //si el player murio (se destruyo) se quedan quietos, evita errores
         if (player == null) return;
+
+        //saca el shake de la posicion para que no afecte el movimiento
+        transform.position -= shakeActual;
+        shakeActual = Vector3.zero;
 
         //se desliza hacia el destino en vez de teletransportarse
         transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
@@ -318,5 +343,34 @@ public class ZombiePuntos : MonoBehaviour
     public void SetLootTable(BuildingLootTable table)
     {
         lootTable = table;
+    }
+
+    void AlRecibirDanio(int vidaRestante)
+    {
+        finShake = Time.time + duracionShake;
+        if (flash != null) StopCoroutine(flash);
+        flash = StartCoroutine(FlashDanio());
+    }
+
+    //aplica el shake al final del frame, asi no pisa el movimiento
+    void LateUpdate()
+    {
+        if (Time.time >= finShake) return;
+        shakeActual = (Vector3)Random.insideUnitCircle * intensidadShake;
+        transform.position += shakeActual;
+    }
+
+    IEnumerator FlashDanio()
+    {
+        float t = 0f;
+        while (t < duracionFlash)
+        {
+            t += Time.deltaTime;
+            //arranca rojo y vuelve de a poco a su color
+            for (int i = 0; i < sprites.Length; i++)
+                sprites[i].color = Color.Lerp(colorDanio, coloresOriginales[i], t / duracionFlash);
+            yield return null;
+        }
+        for (int i = 0; i < sprites.Length; i++) sprites[i].color = coloresOriginales[i];
     }
 }

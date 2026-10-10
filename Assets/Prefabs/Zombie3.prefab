@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5939061274666260821}
   - component: {fileID: 587629140476793945}
   - component: {fileID: 1297096903277860955}
+  - component: {fileID: 6267519702807825020}
   m_Layer: 6
   m_Name: Zombie3
   m_TagString: Untagged
@@ -155,6 +156,10 @@ MonoBehaviour:
   player: {fileID: 0}
   puntos: []
   efectoSangreHold: {fileID: 5639014293177155884, guid: 817d67f04a6ecf048a4c9b661d0d0be8, type: 3}
+  colorDanio: {r: 1, g: 0, b: 0, a: 1}
+  duracionFlash: 0.2
+  intensidadShake: 0.1
+  duracionShake: 0.1
   offsetPunto: {x: 0, y: 0}
   puntoAtaque: {fileID: 0}
   beatsPorPaso: 1
@@ -196,6 +201,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &6267519702807825020
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856871505327660818}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9fc505967ac34f246abcbb85a6d778e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5043891404600242238
 GameObject:
   m_ObjectHideFlags: 0
