@@ -90,6 +90,9 @@ public class ZombiePuntos : MonoBehaviour
     private bool alreadyDied;
     private BuildingLootTable lootTable;
 
+    //anim: animator del zombi (puede no tener, asi los que no tienen animacion siguen funcionando)
+    private Animator animator;
+
 
     //lo llamada el spawner para asignar todo
     public void Iniciar(Transform nuevoPlayer, Transform[] nuevosPuntos, Transform nuevoPuntoAtaque)
@@ -131,6 +134,10 @@ public class ZombiePuntos : MonoBehaviour
             lineaHold.useWorldSpace = true;
             lineaHold.positionCount = 2;
         }
+
+        //anim
+        animator = GetComponentInChildren<Animator>();
+        Reproducir("Walk", beatsPorPaso);
     }
 
     void OnDestroy()
@@ -152,6 +159,9 @@ public class ZombiePuntos : MonoBehaviour
         transform.position -= shakeActual;
         shakeActual = Vector3.zero;
 
+        //anim: mientras muere se queda quieto
+        if (alreadyDied) return;
+
         //se desliza hacia el destino en vez de teletransportarse
         transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
         ActualizarLinea();
@@ -169,7 +179,7 @@ public class ZombiePuntos : MonoBehaviour
     //se llama en cada beat de la musica, aca se da el paso
     void AlBeat(int beat)
     {
-        if (player == null || atacando) return;
+        if (player == null || atacando || alreadyDied) return;
 
         //mientras lo sujetan, sangra en cada beat y no avanza
         if (sujetado)
@@ -201,6 +211,8 @@ public class ZombiePuntos : MonoBehaviour
             }
 
             destino = Pos(puntos[indice]);
+            //anim: un ciclo de caminata por paso, arranca justo en el beat
+            Reproducir("Walk", beatsPorPaso);
         }
         else
         {
@@ -216,6 +228,8 @@ public class ZombiePuntos : MonoBehaviour
         //se transporta al punto cerca del player y golpea al player
         transform.position = Pos(puntoAtaque);
         destino = transform.position;
+        //anim: el ataque dura lo mismo que beatsEnAtaque
+        Reproducir("Attack", beatsEnAtaque);
         player.GetComponent<Vida>().RecibirGolpe();
 
         yield return new WaitForSeconds(beatsEnAtaque * RelojMusica.Instance.SegundosPorBeat);
@@ -234,6 +248,7 @@ public class ZombiePuntos : MonoBehaviour
         transform.position = Pos(puntos[indice]);
         destino = transform.position;
         atacando = false;
+        Reproducir("Walk", beatsPorPaso);
 
         //reciniciar el conteo, sino antes pegaba muy rapidamente
         beatsContados = 0;
@@ -242,12 +257,13 @@ public class ZombiePuntos : MonoBehaviour
     public void Retroceder()
     {
         //o retrocede si esta atacando o esta en el primer punto
-        if (atacando || indice <= 0)
+        if (atacando || alreadyDied || indice <= 0)
         {
             return;
         }
         indice = Mathf.Max(0, indice - retrocesoPorGolpe);
         destino = Pos(puntos[indice]);
+        Reproducir("Walk", beatsPorPaso);
         //reinicia todo y el conteo hasta el proximo paso
         avanzando = true;
         beatsContados = 0;
@@ -314,35 +330,49 @@ public class ZombiePuntos : MonoBehaviour
 
         Debug.Log($"[{name}] MUERE. LootTable: {lootTable}");
 
-        if (lootTable == null)
+        //anim: reproduce la muerte, ya no se puede golpear y se destruye cuando termina
+        float espera = 0f;
+        if (animator != null)
         {
-            Destroy(gameObject);
-            return;
+            Reproducir("Die", 0f);
+            espera = LargoClip("Die");
+            foreach (Collider2D c in GetComponentsInChildren<Collider2D>()) c.enabled = false;
+            if (lineaHold != null) lineaHold.enabled = false;
         }
 
-        BuildingItemData droppedItem = lootTable.GetRandomItem();
-
-        if (droppedItem == null)
+        //el loot se entrega al momento de morir
+        if (lootTable != null && BuildingInventory.Instance != null)
         {
-            Destroy(gameObject);
-            return;
+            BuildingItemData droppedItem = lootTable.GetRandomItem();
+            if (droppedItem != null)
+                BuildingInventory.Instance.AddItem(droppedItem);
         }
 
-        if (BuildingInventory.Instance == null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        BuildingInventory.Instance.AddItem(droppedItem);
-
-        Destroy(gameObject);
+        Destroy(gameObject, espera);
     }
 
     // define el loot del enemigo
     public void SetLootTable(BuildingLootTable table)
     {
         lootTable = table;
+    }
+
+    //anim: reproduce un estado desde el principio. beatsDuracion = cuantos beats dura el clip (0 = velocidad normal)
+    void Reproducir(string estado, float beatsDuracion)
+    {
+        if (animator == null) return;
+        float largo = LargoClip(estado);
+        animator.speed = beatsDuracion > 0f ? largo / (beatsDuracion * RelojMusica.Instance.SegundosPorBeat) : 1f;
+        animator.Play(estado, 0, 0f);
+    }
+
+    //anim: duracion en segundos de un clip del animator
+    float LargoClip(string nombre)
+    {
+        if (animator == null || animator.runtimeAnimatorController == null) return 0f;
+        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
+            if (clip.name == nombre) return clip.length;
+        return 0f;
     }
 
     void AlRecibirDanio(int vidaRestante)
