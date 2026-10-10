@@ -1022,6 +1022,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ControlNivel
   jugador: {fileID: 1937807593}
   segundosTrasMorir: 2
+  segundosExtraFinal: 3
+  documento: {fileID: 1075740524}
+  segundosOscurecer: 2
+  oscuridadMaxima: 1
 --- !u!4 &1403720732
 Transform:
   m_ObjectHideFlags: 0
@@ -1066,7 +1070,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 43dcb15b3b3c4d34c9ab022bde65883b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 28fbd183a98961f458cc69b61fd5cfa9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
@@ -1166,7 +1170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelojMusica
   musica: {fileID: 1542974984}
   jugador: {fileID: 1937807593}
-  bpm: 106
+  bpm: 126
   offset: 0
   esperarAnimacion: 1
   cuentaInicial: 0

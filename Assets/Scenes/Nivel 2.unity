@@ -1205,6 +1205,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ControlNivel
   jugador: {fileID: 1937807593}
   segundosTrasMorir: 2
+  segundosExtraFinal: 3
+  documento: {fileID: 476207285}
+  segundosOscurecer: 2
+  oscuridadMaxima: 1
 --- !u!4 &1403720732
 Transform:
   m_ObjectHideFlags: 0
