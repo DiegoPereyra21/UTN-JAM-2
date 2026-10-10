@@ -34,7 +34,7 @@ public class Player2D : MonoBehaviour
     [SerializeField] private GameObject efectoCaida;
     [SerializeField] private GameObject efectoImpacto;
     [SerializeField] private GameObject efectoSangre;
-
+    [SerializeField] private GameObject efectoSangreDanio;
     //animaciones
     private Animator animator;
     private bool muerto;
@@ -105,6 +105,9 @@ public class Player2D : MonoBehaviour
     //efectos al recibir daño: sacudida de camara y flash rojo
     void AlRecibirDanio(int vidaActual)
     {
+        if (efectoSangreDanio != null)
+            Instantiate(efectoSangreDanio, transform.position, Quaternion.identity);
+
         //si fue el golpe que mato la sacudida dura el doble
         if (CameraShake.Instance != null)
             CameraShake.Instance.Sacudir(shakeDanio, vidaActual <= 0 ? duracionShakeDanio * 2f : duracionShakeDanio);
