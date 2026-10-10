@@ -7,6 +7,9 @@ public class ZombiePuntos : MonoBehaviour
     //puntos del camino en orden 
     [SerializeField] private Transform[] puntos;
 
+    //sangre que sale en cada beat mientras lo sujetan
+    [SerializeField] private GameObject efectoSangreHold;
+
     //ajuste manual extra por si la cabeza no queda justo en el punto
     [SerializeField] private Vector2 offsetPunto;
 
@@ -141,7 +144,15 @@ public class ZombiePuntos : MonoBehaviour
     //se llama en cada beat de la musica, aca se da el paso
     void AlBeat(int beat)
     {
-        if (player == null || atacando || sujetado) return;
+        if (player == null || atacando) return;
+
+        //mientras lo sujetan, sangra en cada beat y no avanza
+        if (sujetado)
+        {
+            if (efectoSangreHold != null)
+                Instantiate(efectoSangreHold, cabeza != null ? cabeza.position : transform.position, Quaternion.identity);
+            return;
+        }
 
         //espera la cantidad de beats por paso
         beatsContados++;

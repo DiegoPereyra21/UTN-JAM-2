@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7295714218744487239}
   - component: {fileID: 2626105528842563986}
   m_Layer: 0
-  m_Name: EfectoSangre
+  m_Name: EfectoSangre 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
+  m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,32 +105,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EfectoSprites
   frames:
-  - {fileID: 21300000, guid: 316d9012967906446bca6e05bcd82175, type: 3}
-  - {fileID: 21300000, guid: 52f2beddbd8aeef49891ea05e6a8babe, type: 3}
-  - {fileID: 21300000, guid: f0930458e52664c4895cfd6ddf47e6a7, type: 3}
-  - {fileID: 21300000, guid: 26080bce854d55448a4b837bd270d697, type: 3}
-  - {fileID: 21300000, guid: 0039af40f52675f498ecf7053c671486, type: 3}
-  - {fileID: 21300000, guid: 1208b7a4f62bba247a9f7269c65ab6bb, type: 3}
-  - {fileID: 21300000, guid: 7e01ed00c1f1912439b18fea3ca5348e, type: 3}
-  - {fileID: 21300000, guid: e17128a210c02d7479ec5bae9084d447, type: 3}
-  - {fileID: 21300000, guid: fa6e2ffb29809684dacd993660e2f79e, type: 3}
-  - {fileID: 21300000, guid: a6638a213fba95d44bd05a8225ecc950, type: 3}
-  - {fileID: 21300000, guid: 01066161a8b0c0c4a872fcbf004b550b, type: 3}
-  - {fileID: 21300000, guid: 57482f46463dcd649bba09a102dbcbfb, type: 3}
-  - {fileID: 21300000, guid: 3962c5244ed0a5f428f0919d455aba78, type: 3}
-  - {fileID: 21300000, guid: be7bfe463bedbc74abc45e4beab03f0f, type: 3}
-  - {fileID: 21300000, guid: fed00d8078152de4e87b2d65a2bc6e29, type: 3}
-  - {fileID: 21300000, guid: ecc38a2f5f28e254099d06285c28b10e, type: 3}
-  - {fileID: 21300000, guid: 9a0229ed48544f548adeedbf54e34f79, type: 3}
-  - {fileID: 21300000, guid: a2e730799d7954c4c81835b55de87818, type: 3}
-  - {fileID: 21300000, guid: 2c5765dac2467734b8379832eb3329b6, type: 3}
-  - {fileID: 21300000, guid: 13f73df005b8e1840a434d56555bb1e2, type: 3}
-  - {fileID: 21300000, guid: 663aa37332b96de47a54abdb2fb0d703, type: 3}
-  - {fileID: 21300000, guid: c57fcc79edfa7a34a8f5e15d13c8fcda, type: 3}
-  - {fileID: 21300000, guid: 3fef4e3b43bc63e40bb7c2869941526f, type: 3}
-  - {fileID: 21300000, guid: 9f05bb2e4911dc14ea05eaec320ff419, type: 3}
-  - {fileID: 21300000, guid: 0b13328cb805dfb4fa59e1efff9717b5, type: 3}
-  - {fileID: 21300000, guid: d51725161bafa934d9ed5fa59aa4224c, type: 3}
-  - {fileID: 21300000, guid: 7266a880400e59f4fa4e11fe0a3f321c, type: 3}
-  - {fileID: 21300000, guid: 9b3ebd16eab127a499e7975fdb176a39, type: 3}
-  fps: 55
+  - {fileID: -1412480193, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: -728282311, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: -537077077, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: -220441051, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: 1674313108, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: 2147121873, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: 1411541967, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: -1800026646, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: 1233786480, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  - {fileID: -1625371864, guid: 2bed2829a0bbd4241b584db4c0da159e, type: 3}
+  fps: 32
+  offset: {x: 0, y: 0}

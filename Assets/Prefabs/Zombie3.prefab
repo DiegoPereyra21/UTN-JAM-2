@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombiePuntos
   player: {fileID: 0}
   puntos: []
+  efectoSangreHold: {fileID: 5639014293177155884, guid: 817d67f04a6ecf048a4c9b661d0d0be8, type: 3}
   offsetPunto: {x: 0, y: 0}
   puntoAtaque: {fileID: 0}
   beatsPorPaso: 1
