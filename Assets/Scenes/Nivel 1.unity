@@ -1168,7 +1168,7 @@ MonoBehaviour:
   jugador: {fileID: 1937807593}
   bpm: 106
   offset: 0
-  esperarAnimacion: 0
+  esperarAnimacion: 1
   cuentaInicial: 0
   fadeIn: 1.5
   metronomo: 0
